@@ -1,0 +1,34 @@
+.margin-bottom-10{
+    margin-bottom: 10px!important;
+}
+.margin-bottom-20{
+    margin-bottom: 20px!important;
+}
+.logout_btn{
+    padding: 15px;
+    background: transparent;
+    border: none;
+    color: white;
+}
+.logout_btn:hover,.logout_btn:active,.logout_btn:focus{
+    background:rgba(0,0,0,0.1);
+    color:#f6f6f6;
+}
+.vermid thead>tr>td, .vermid tbody>tr>td{
+    vertical-align: middle;
+    border: 1px #cccccc solid;
+}
+.removeimg a{
+    display: block;
+    background-color: #333333;
+    color: white;
+}
+.removeimg a:hover{
+    background-color: #555555;
+    color: white;
+}
+._switchCss .form-group{margin-bottom: 0;}
+
+.removeimg{margin-bottom: 10px;}
+._boxthumb{width: 122px;height: 122px;position: relative;border: 1px solid #cccccc;}
+._boxthumb img{max-width: 120px;max-height: 120px;margin: 0;position: absolute;top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);}

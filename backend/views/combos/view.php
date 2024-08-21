@@ -1,0 +1,56 @@
+<?php
+
+use yii\helpers\Html;
+use yii\widgets\DetailView;
+
+/* @var $this yii\web\View */
+/* @var $model backend\models\Products */
+
+$this->title = $model->title;
+$this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<div class="products-view">
+
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <p>
+        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Are you sure you want to delete this item?',
+                'method' => 'post',
+            ],
+        ]) ?>
+    </p>
+
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            'id',
+            'name_vi',
+            'name_en',
+            'des_vi:ntext',
+            'des_en:ntext',
+            'content_vi:ntext',
+            'content_en:ntext',
+            'image:ntext',
+            'thumb:ntext',
+            'slug:ntext',
+            'parent',
+            'number',
+            'price',
+            'price_promotion',
+            'feature',
+            'status',
+            'title:ntext',
+            'description:ntext',
+            'keyword:ntext',
+            'tag:ntext',
+            'created_date',
+            'updated_date',
+        ],
+    ]) ?>
+
+</div>

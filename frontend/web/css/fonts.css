@@ -1,0 +1,52 @@
+@font-face {font-family: 'Roboto-Regular';src: url(fonts/Roboto-Regular.ttf);}
+@font-face {font-family: 'Roboto-Condensed';src: url('fonts/Roboto-Condensed.ttf');}
+@font-face {font-family: 'RobotoCondensed-Regular';src: url('fonts/RobotoCondensed-Regular.ttf');}
+@font-face {font-family: 'Roboto-Light';src: url('fonts/Roboto-Light.ttf');}
+@font-face {font-family: 'Roboto-Italic';src: url('fonts/Roboto-Italic.ttf');}
+@font-face {font-family: 'RobotoCondensed-Light';src: url('fonts/RobotoCondensed-Light.ttf');}
+@font-face {font-family: 'Roboto-Bold';src: url('fonts/Roboto-Bold.ttf');}
+@font-face {font-family: 'Roboto-Black';src: url('fonts/Roboto-Black.ttf');}
+@font-face {font-family: 'RobotoCondensed-Bold';src: url('fonts/RobotoCondensed-Bold.ttf');}
+@font-face {font-family: 'Roboto-Medium';src: url('fonts/Roboto-Medium.ttf');}
+@font-face {font-family: 'UTM Avo';src: url('fonts/UTM Avo.ttf');}
+@font-face {font-family: 'UTM AvoBold';src: url('fonts/UTM AvoBold.ttf');}
+@font-face {font-family: 'UTM HelvetIns';src: url('fonts/UTM HelvetIns.ttf');}
+@font-face {font-family: 'OpenSans-Bold';src: url('fonts/OpenSans-Bold.ttf');}
+@font-face {font-family: 'OpenSans-Semibold';src: url('fonts/OpenSans-Semibold.ttf');}
+@font-face {font-family: 'OpenSans-Regular';src: url('fonts/OpenSans-Regular.ttf');}
+@font-face {font-family: 'SFUFuturaHeavy';src: url('fonts/SFUFuturaHeavy.TTF');}
+@font-face {font-family: 'Muli-Light';src: url('fonts/Muli-Light.ttf');}
+@font-face {font-family: 'Muli-Regular';src: url('fonts/Muli-Regular.ttf');}
+@font-face {font-family: 'Muli-Bold';src: url('fonts/Muli-Bold.ttf');}
+@font-face {font-family: 'Muli-SemiBold';src: url('fonts/Muli-SemiBold.ttf');}
+@font-face {font-family: 'Muli-ExtraBold';src: url('fonts/Muli-ExtraBold.ttf');}
+@font-face {font-family: 'Muli-Italic';src: url('fonts/Muli-Italic.ttf');}
+@font-face {font-family: 'UTM American Sans';src: url('fonts/UTM American Sans.ttf');}
+@font-face {font-family: 'UTM Davida';src: url('fonts/UTM Davida.ttf');}
+@font-face {font-family: 'Shelia VNF Regular';src: url('fonts/Shelia VNF Regular.ttf');}
+@font-face {font-family: 'Quicksand-Regular';src: url('fonts/Quicksand-Regular.ttf');}
+@font-face {font-family: 'Quicksand-Bold';src: url('fonts/Quicksand-Bold.ttf');}
+@font-face {font-family: 'Oswald-Light';src: url('fonts/Oswald-Light.ttf');}
+@font-face {font-family: 'Oswald-Regular';src: url('fonts/Oswald-Regular.ttf');}
+@font-face {font-family: 'Oswald-Bold';src: url('fonts/Oswald-Bold.ttf');}
+@font-face {font-family: 'Oswald-Medium';src: url('fonts/Oswald-Medium.ttf');}
+@font-face {font-family: 'Oswald-SemiBold';src: url('fonts/Oswald-SemiBold.ttf');}
+@font-face {font-family: 'UVNNguyenDu';src: url('fonts/UVNNguyenDu.TTF');}
+@font-face {font-family: 'UVF Monthoers';src: url('fonts/UVF Monthoers.otf');}
+@font-face {font-family: 'UVF Metroscript';src: url('fonts/UVF Metroscript.ttf');}
+@font-face {font-family: 'SVN-Caprica Script';src: url('fonts/SVN-Caprica Script.ttf');}
+@font-face {font-family: 'Pacifico-Regular';src: url('fonts/Pacifico-Regular.ttf');}
+@font-face {font-family: 'UTM Beautiful Caps';src: url('fonts/UTM Beautiful Caps.ttf');}
+@font-face {font-family: 'SFUMachineRegular';src: url('fonts/SFUMachineRegular.TTF');}
+@font-face {font-family: 'UTM Impact';src: url('fonts/UTM Impact.ttf');}
+@font-face {font-family: 'UTM Aristote';src: url('fonts/UTM Aristote.ttf');}
+@font-face {font-family: 'iCielPanton-Black';src: url('fonts/iCielPanton-Black.otf');}
+@font-face {font-family: 'MTD The Beautyline';src: url('fonts/MTD The Beautyline.otf');}
+@font-face {font-family: 'UTM Dinh Tran';src: url('fonts/UTM Dinh Tran.ttf');}
+@font-face {font-family: 'Gotham-Ultra';src: url('fonts/Gotham-Ultra.otf');}
+@font-face {font-family: 'MissLeGatees-Regularfn';src: url('fonts/MissLeGatees-Regularfn.ttf');}
+@font-face {font-family: 'SFUDinEngAlt';src: url('fonts/SFUDinEngAlt.TTF');}
+@font-face {font-family: 'AvertaStdCY-BlackItalic';src: url('fonts/Font-Averta/AvertaStdCY-BlackItalic_1.otf');}
+@font-face {font-family: 'AvertaStdCY-Bold';src: url('fonts/Font-Averta/AvertaStdCY-Bold_1.otf');}
+@font-face {font-family: 'AvertaStdCY-Regular';src: url('fonts/Font-Averta/AvertaStdCY-Regular_3.otf');}
+@font-face {font-family: 'AvertaStdCY-Semibold';src: url('fonts/Font-Averta/AvertaStdCY-Semibold_1.otf');}

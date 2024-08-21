@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="wow_book.css" rel="stylesheet" type="text/css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="wow_book.min.js" type="text/javascript"></script>
+        <style type="text/css">
+            .wowbook-left {
+                text-align: right !important;
+            }  
+            .wowbook-right {
+                text-align: left !important;
+            }
+            .wowbook-lightbox {
+                background-color: #282828;
+                z-index: 99999;
+            }
+            .loading-data-pdf
+            {
+                color: #fff;
+                display: block;
+                font-size: 20px;
+                margin-top: 48px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="book" style="width: 100%; text-align: center; margin: 0 auto;">
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_001-2.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_002-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_003-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_004-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_005-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_006-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_007-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_008-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_009-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_010-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_011-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_012-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_013-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_014-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_015-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_016-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_017-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_018-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_019-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_020-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_021-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_022-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_023-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/08/BROCHURE-2020-25032020_024.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/08/BROCHURE-2020-25032020_025.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_026-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_027-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_032-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_033-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_034-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_035-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_036-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_037-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_038-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_039-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_040-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_041-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_042-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_043-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_044-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_045-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_046-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_047-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_050-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_051-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_052-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_053-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/08/BROCHURE-2020-25032020_054.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/08/BROCHURE-2020-25032020_055.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_056-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/08/BROCHURE-ATAD-2020-final-19022020_057-14.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_058-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_059-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_060-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_061-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_062-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_063-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_064-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_065-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_066-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_067-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_068-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_069-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_070-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_071-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_072-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_073-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_074-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_075-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_076-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_077-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_078-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_079-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_080-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_081-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/08/BROCHURE-2020-25032020_082.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/08/BROCHURE-2020-25032020_083.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_084-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_085-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_086-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_087-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_088-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_089-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_090-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_091-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_092-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_093-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_094-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_095-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_096-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_097-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_098-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_099-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_100-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_101-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_102-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_103-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_104-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_105-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_106-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_107-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_108-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_109-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_110-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_111-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_112-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_113-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_114-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_115-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_116-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_117-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_118-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_119-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_120-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_121-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_122-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_123-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_124-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_125-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_126-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/03/BROCHURE-2020-25032020_127-1.jpg" /></div>
+            <div><img src="https://atad.vn/wp-content/uploads/2020/05/BROCHURE-2020-25032020_128.jpg" /></div>
+        </div>
+        <script type="text/javascript">
+            var book = null;
+            var bookOptions = {
+                height: 1795, width: 2408, maxWidth: 2408, maxHeight: 1795
+                , centeredWhenClosed: true
+                , hardcovers: true
+                        //,numberedPages : [1,-2]
+                        // ,toolbar : "first, back, next, last, toc, zoomin, zoomout, slideshow, flipsound, fullscreen, thumbnails, download"
+                , toolbar: "first, back, next, last, zoomin, zoomout, slideshow, flipsound, fullscreen, thumbnails, download"
+                , thumbnailsPosition: 'bottom'
+                , responsiveHandleWidth: 50
+
+                , lightbox: "#show_book"
+                , gutterShadow: true
+                , flipSoundPath: 'sound/'
+                , perspective: 2000,
+                downloadURL: "https://atad.vn/wp-content/uploads/2020/08/BROCHURE-2020-25032020.pdf"
+            };
+            $('#book').wowBook(bookOptions); // create the book
+            book = $.wowBook("#book"); // get book object instance
+            book.showLightbox();
+            $(".wowbook-lightbox > .wowbook-close").remove(); // remove lightbox's close button
+        </script>
+    </body>
+</html>
