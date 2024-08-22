@@ -6,18 +6,21 @@ use Yii;
 use yii\base\Component;
 use TonchikTm\Yii2Thumb\ImageThumb;
 
-class MyComponent extends Component {
+class MyComponent extends Component
+{
 
     public $website;
     public $config;
 
-    public function init() {
+    public function init()
+    {
         $this->website = \backend\models\Config::findOne(1);
         $this->config = \yii\helpers\ArrayHelper::map(\backend\models\Configs::find()->all(), 'key', 'value');
         parent::init();
     }
 
-    public function myTruncate($string, $limit, $break = ".", $pad = "...") {
+    public function myTruncate($string, $limit, $break = ".", $pad = "...")
+    {
         // return with no change if string is shorter than $limit
         if (strlen($string) <= $limit)
             return $string;
@@ -31,7 +34,8 @@ class MyComponent extends Component {
         return $string;
     }
 
-    public function utf8convert($str) {
+    public function utf8convert($str)
+    {
 
         if (!$str)
             return false;
@@ -52,7 +56,8 @@ class MyComponent extends Component {
         return $str;
     }
 
-    public function getLink($type, $id) {
+    public function getLink($type, $id)
+    {
         switch ($type) {
             case 'Home':
                 $link = \Yii::$app->homeUrl;
@@ -106,15 +111,17 @@ class MyComponent extends Component {
         return $link;
     }
 
-    public function menuGenerator($type, $parent) {
+    public function menuGenerator($type, $parent)
+    {
         $menu = \backend\models\Menu::find()->where(['type' => $type, 'parent' => $parent])->orderBy('number asc, id desc')->all();
         foreach ($menu as $key => $value) {
+            // print_r($value);
             $id = $value['id'];
             $name = $value['name_' . Yii::$app->language];
             $link = $this->getLink($value['model'], $value['model_id']);
             $subMenu = \backend\models\Menu::find()->where(['type' => $type, 'parent' => $id])->orderBy('number asc, id desc')->all();
-            if ($subMenu) {
-                ?>
+            /*if ($subMenu) {
+?>
                 <li aria-haspopup="true">
                     <a href="<?= $link; ?>" title="<?= $name; ?>">
                         <?= $name; ?>
@@ -125,20 +132,21 @@ class MyComponent extends Component {
                         </ul>
                     </div>
                 </li>
-                <?php
-            } else {
-                ?>
-                <li>
-                    <a class="<?= ($value['model'] == "Home") ? '_active-home' : ''; ?>" href="<?= $link; ?>" title="<?= ($value['model'] == "Home") ? 'Trang chủ' : $name; ?>">
-                        <?= $name; ?>
-                    </a>
-                </li>
-                <?php
-            }
+            <?php
+            } else {*/
+?>
+            <li>
+                <a class="<?= ($value['model'] == "Home") ? '_active-home' : ''; ?>" href="<?= $link; ?>" title="<?= ($value['model'] == "Home") ? 'Trang chủ' : $name; ?>">
+                    <?= $name; ?>
+                </a>
+            </li>
+            <?php
+            // }
         }
     }
 
-    public function menuMobileGenerator($type, $parent) {
+    public function menuMobileGenerator($type, $parent)
+    {
         $menu = \backend\models\Menu::find()->where(['type' => $type, 'parent' => $parent])->orderBy('number asc, id desc')->all();
         foreach ($menu as $key => $value) {
             $id = $value['id'];
@@ -146,7 +154,7 @@ class MyComponent extends Component {
             $link = $this->getLink($value['model'], $value['model_id']);
             $subMenu = \backend\models\Menu::find()->where(['type' => $type, 'parent' => $id])->orderBy('number asc, id desc')->all();
             if ($subMenu) {
-                ?>
+            ?>
                 <li>
                     <a href="<?= $link; ?>" title="<?= $name; ?>">
                         <?= $name; ?>
@@ -155,20 +163,21 @@ class MyComponent extends Component {
                         <?php $this->menuMobileGenerator($type, $id); ?>
                     </ul>
                 </li>
-                <?php
+            <?php
             } else {
-                ?>
+            ?>
                 <li>
                     <a href="<?= $link; ?>" title="<?= $name; ?>">
                         <?= $name; ?>
                     </a>
                 </li>
-                <?php
+            <?php
             }
         }
     }
 
-    public function menuFooterGenerator($type, $parent) {
+    public function menuFooterGenerator($type, $parent)
+    {
         $menu = \backend\models\Menu::find()->where(['type' => $type, 'parent' => $parent])->orderBy('number asc, id desc')->all();
         foreach ($menu as $key => $value) {
             $name = $value['name_' . Yii::$app->language];
@@ -183,7 +192,8 @@ class MyComponent extends Component {
         }
     }
 
-    public function menuCatGenerator($parent) {
+    public function menuCatGenerator($parent)
+    {
         $menu = \backend\models\Categorys::find()->where(['status' => 1, 'parent' => $parent])->orderBy('number asc, id desc')->all();
         foreach ($menu as $key => $value) {
             $id = $value['id'];
@@ -193,21 +203,21 @@ class MyComponent extends Component {
             $link = Yii::$app->urlManager->createUrl('/san-pham/' . $value['slug']);
             $subMenu = \backend\models\Categorys::find()->where(['status' => 1, 'parent' => $id])->orderBy('number asc, id desc')->all();
             if ($subMenu) {
-                ?>
+            ?>
                 <li aria-haspopup="true">
                     <a href="<?= $link; ?>" title="<?= $name; ?>">
                         <?php
                         if ($subId == 0) {
-                            ?>
+                        ?>
                             <div class="text-center">
                                 <div><?= ImageThumb::thumbPicture(Yii::getAlias('@rootpath/' . $icon), 69, 58, ['source' => ['quality' => 80, 'mode' => ImageThumb::THUMBNAIL_INSET], 'img' => ['mode' => ImageThumb::THUMBNAIL_INSET, 'quality' => 80, 'attributes' => ['alt' => $name, 'class' => 'lazy']]]); ?></div>
                                 <div style="margin: 5px 0;"><?= $name; ?></div>
                             </div>
-                            <?php
+                        <?php
                         } else {
-                            ?>
+                        ?>
                             <div class="text-left"><?= $name; ?></div>
-                            <?php
+                        <?php
                         }
                         ?>
                     </a>
@@ -217,33 +227,34 @@ class MyComponent extends Component {
                         </ul>
                     </div>
                 </li>
-                <?php
+            <?php
             } else {
-                ?>
+            ?>
                 <li>
                     <a href="<?= $link; ?>" title="<?= $name; ?>">
                         <?php
                         if ($subId == 0) {
-                            ?>
+                        ?>
                             <div class="text-center">
                                 <div><?= ImageThumb::thumbPicture(Yii::getAlias('@rootpath/' . $icon), 69, 58, ['source' => ['quality' => 80, 'mode' => ImageThumb::THUMBNAIL_INSET], 'img' => ['mode' => ImageThumb::THUMBNAIL_INSET, 'quality' => 80, 'attributes' => ['alt' => $name, 'class' => 'lazy']]]); ?></div>
                                 <div style="margin: 5px 0;"><?= $name; ?></div>
                             </div>
-                            <?php
+                        <?php
                         } else {
-                            ?>
+                        ?>
                             <div class="text-left"><?= $name; ?></div>
-                            <?php
+                        <?php
                         }
                         ?>
                     </a>
                 </li>
-                <?php
+            <?php
             }
         }
     }
 
-    public function menuCatMobileGenerator($parent) {
+    public function menuCatMobileGenerator($parent)
+    {
         $menu = \backend\models\Categorys::find()->where(['status' => 1, 'parent' => $parent])->orderBy('number asc, id desc')->all();
         foreach ($menu as $key => $value) {
             $id = $value['id'];
@@ -251,7 +262,7 @@ class MyComponent extends Component {
             $link = Yii::$app->urlManager->createUrl('/san-pham/' . $value['slug']);
             $subMenu = \backend\models\Categorys::find()->where(['status' => 1, 'parent' => $id])->orderBy('number asc, id desc')->all();
             if ($subMenu) {
-                ?>
+            ?>
                 <li>
                     <a href="<?= $link; ?>" title="<?= $name; ?>">
                         <?= $name; ?>
@@ -260,20 +271,21 @@ class MyComponent extends Component {
                         <?php $this->menuCatGenerator($id); ?>
                     </ul>
                 </li>
-                <?php
+            <?php
             } else {
-                ?>
+            ?>
                 <li>
                     <a href="<?= $link; ?>" title="<?= $name; ?>">
                         <?= $name; ?>
                     </a>
                 </li>
-                <?php
+<?php
             }
         }
     }
 
-    function sw_get_current_weekday() {
+    function sw_get_current_weekday()
+    {
         $date = getdate();
         switch ($date['weekday']) {
             case 'Monday':
@@ -300,7 +312,5 @@ class MyComponent extends Component {
         }
         return $weekday . ', Ngày ' . $date['mday'] . ' Tháng ' . $date['mon'] . ' Năm ' . $date['year'];
     }
-
 }
 ?>
-
