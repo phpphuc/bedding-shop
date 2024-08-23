@@ -9,13 +9,17 @@ use backend\models\Videos;
 use backend\models\Gallery;
 
 /* @var $this yii\web\View */
+
 $this->title = Yii::$app->MyComponent->website['title'];
-echo Posts::tableName();
-echo \backend\models\PageSearch::tableName();
-echo \backend\models\ResetPasswordForm::className();
-echo \backend\models\AuthAssignment::tableName();
+// echo Posts::tableName();
+// echo \backend\models\PageSearch::tableName();
+// echo \backend\models\ResetPasswordForm::className();
+// echo \backend\models\AuthAssignment::tableName();
 ?>
-<?php include 'slider.php'; ?>
+<?php //include 'slider.php';
+?>
+<?php include 'swiper.php';
+?>
 <div class="site-index">
     <?php
     if ($pageOne) {
@@ -23,32 +27,27 @@ echo \backend\models\AuthAssignment::tableName();
         $nameAb = $pageOne['name_' . Yii::$app->language];
         $desAb = $pageOne['des_' . Yii::$app->language];
         $imgAb = $pageOne['image'];
-        ?>
-        <div class="_bgab">
-            <div class="pagewrap">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padding-right-40">
-                        <div class="hover14 hinhgt"><a href="<?= $linkAb; ?>" title="<?= $nameAb; ?>"><figure><?= ImageThumb::thumbPicture(Yii::getAlias('@rootpath/' . $imgAb), 560, 432, ['source' => ['quality' => 80, 'mode' => ImageThumb::THUMBNAIL_OUTBOUND], 'img' => ['mode' => ImageThumb::THUMBNAIL_OUTBOUND, 'quality' => 80, 'attributes' => ['alt' => $nameAb, 'class' => 'lazy']]]); ?></figure></a></div>
+    ?>
+        <section class="intro-background bg-light py-8">
+            <div class="container mx-auto">
+                <div class="items-center justify-between md:flex">
+                    <div class="md:w-1/2">
+                        <!-- <img src="images/about-slide.png" alt="Introduction Image" class="w-full rounded-lg" /> -->
+                        <?= ImageThumb::thumbPicture(Yii::getAlias('@rootpath/' . $imgAb), 560, 432, ['source' => ['quality' => 80, 'mode' => ImageThumb::THUMBNAIL_OUTBOUND], 'img' => ['mode' => ImageThumb::THUMBNAIL_OUTBOUND, 'quality' => 80, 'attributes' => ['alt' => $nameAb, 'class' => 'lazy']]]); ?>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padding-left-0">
-                        <div class="_box-nameab">
-
-                            <div class="_nameab-bot"><?= Yii::$app->MyComponent->config['nameab-top_' . Yii::$app->language]; ?></div>
+                    <div class="px-4 md:ml-8 md:w-1/2">
+                        <div class="text-center">
+                            <h2 class="font-utm-avo text-3xl font-bold text-pink-500"><?= $nameAb ?></h2>
+                            <div class="decoration my-2">
+                                <img src="../images/intro-decoration.png" alt="Decoration" class="mx-auto" />
+                            </div>
                         </div>
-                        <div class="_desab"><?= $desAb; ?></div>
-                        <div class="_btnab"><a href="<?= $linkAb; ?>" title="<?= $nameAb; ?>"><?= Yii::t('app', 'Read more') ?></a></div>
+                        <div style="font-family: 'Roboto', sans-serif;" class="text-justify !font-roboto text-lg leading-relaxed text-gray-700"><?= $desAb ?></div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="pagewrap">
-            <div class="row">
-                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
-                    <div class="clearfix margin-bottom-50" style="border-bottom: 1px black dashed;"></div>
-                </div>
-            </div>
-        </div>
-        <?php
+        </section>
+    <?php
     }
     ?>
     <div class="_loigiatri">
@@ -64,13 +63,13 @@ echo \backend\models\AuthAssignment::tableName();
                                 foreach ($visaos as $key => $value) {
                                     $nameVs = $value['name_' . Yii::$app->language];
                                     $imgVs = $value['image'];
-                                    ?>
+                            ?>
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 padding-right-40">
-                                        <?=$key?>
+                                        <?= $key ?>
                                         <div><?= ImageThumb::thumbPicture(Yii::getAlias('@rootpath/' . $imgVs), 126, 126, ['source' => ['quality' => 80, 'mode' => ImageThumb::THUMBNAIL_INSET], 'img' => ['mode' => ImageThumb::THUMBNAIL_INSET, 'quality' => 80, 'attributes' => ['alt' => $nameVs, 'class' => 'lazy']]]); ?></div>
                                         <div class="_nameVs"><?= $nameVs; ?></div>
                                     </div>
-                                    <?php
+                            <?php
                                 }
                             }
                             ?>
@@ -90,10 +89,10 @@ echo \backend\models\AuthAssignment::tableName();
         } else {
             $newAll = Posts::find()->where(['status' => 1, 'feature' => 1, 'parent' => $dichvus['id']])->orderBy('number asc, id desc')->limit(4)->asArray()->all();
         }
-        ?>
+    ?>
 
         <div class="_dichvus" style="background: url('<?= Yii::$app->MyComponent->config['bgdv']; ?>') no-repeat; background-size: 100% 100%;">
-            <div class="pagewrap" >
+            <div class="pagewrap">
 
                 <div class="row" style="border-top: 5px #fe382d solid;">
                     <div class="col-md-12 text-center">
@@ -114,7 +113,7 @@ echo \backend\models\AuthAssignment::tableName();
                         $imgN = $items['image'];
                         $noidungN = $items['des_' . Yii::$app->language];
                         if ($stt % 2 == 0) {
-                            ?>  
+                ?>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="_hinhdv">
@@ -132,12 +131,12 @@ echo \backend\models\AuthAssignment::tableName();
                             </div>
                             <div class="clearfix margin-bottom-30"></div>
                         <?php } else {
-                            ?>
+                        ?>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="_boxdv1">
                                         <div class="_nameDv"><a href="<?= $linkN; ?>" title="<?= $nameN; ?>"><span><?= $nameN; ?></span></a></div>
-                                        <div class="noidungdv"><?= $noidungN ; ?></div>
+                                        <div class="noidungdv"><?= $noidungN; ?></div>
                                         <div class="_btnab"><a href="<?= $linkN; ?>" title="Giới thiệu"><?= Yii::t('app', 'Read more') ?></a></div>
                                     </div>
                                 </div>
@@ -150,7 +149,7 @@ echo \backend\models\AuthAssignment::tableName();
 
                             </div>
                             <div class="clearfix margin-bottom-30"></div>
-                            <?php
+                <?php
                         }
                     }
                 }
@@ -172,15 +171,15 @@ echo \backend\models\AuthAssignment::tableName();
                             $name = $valueV['name_' . Yii::$app->language];
                             $link = $valueV['link'];
                             $img = $valueV['image'];
-                            ?>
+                    ?>
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center" style="width: 20%">
                                 <div class="_itemdoitac">
                                     <a target="_blank" href="<?= $link; ?>" title="<?= $name; ?>">
-                                    <?= ImageThumb::thumbPicture(Yii::getAlias('@rootpath/' . $img), 230, 115, ['source' => ['quality' => 80, 'mode' => ImageThumb::THUMBNAIL_OUTBOUND], 'img' => ['mode' => ImageThumb::THUMBNAIL_OUTBOUND, 'quality' => 80, 'attributes' => ['alt' => $name, 'class' => 'lazy']]]); ?>
-                                  </a>
+                                        <?= ImageThumb::thumbPicture(Yii::getAlias('@rootpath/' . $img), 230, 115, ['source' => ['quality' => 80, 'mode' => ImageThumb::THUMBNAIL_OUTBOUND], 'img' => ['mode' => ImageThumb::THUMBNAIL_OUTBOUND, 'quality' => 80, 'attributes' => ['alt' => $name, 'class' => 'lazy']]]); ?>
+                                    </a>
                                 </div>
                             </div>
-                            <?php
+                    <?php
                         }
                     }
                     ?>
@@ -189,10 +188,10 @@ echo \backend\models\AuthAssignment::tableName();
                 </div>
             </div>
         </div>
-        <?php
+    <?php
     }
     if ($bacsi) {
-        ?>
+    ?>
         <div class="_bgbacsi" style="background: url('<?= Yii::$app->MyComponent->config['bgdn']; ?>') no-repeat; background-size: 100% 100%;">
             <div class="pagewrap">
                 <div class="row">
@@ -212,25 +211,26 @@ echo \backend\models\AuthAssignment::tableName();
                                     $namebs = $value['name_' . Yii::$app->language];
                                     $desbs = $value['des_' . Yii::$app->language];
                                     $imgbs = $value['image'];
-                                    ?>
+                                ?>
                                     <div class="col-md-4 text-center">
                                         <div class="_imgbs"><?= ImageThumb::thumbPicture(Yii::getAlias('@rootpath/' . $imgbs), 435, 600, ['source' => ['quality' => 80, 'mode' => ImageThumb::THUMBNAIL_OUTBOUND], 'img' => ['mode' => ImageThumb::THUMBNAIL_OUTBOUND, 'quality' => 80, 'attributes' => ['alt' => $namebs, 'class' => 'lazy']]]); ?></div>
                                         <div class="_name-bs"><?= $namebs; ?></div>
                                         <div class="_chuyenkhoa"><?= $desbs; ?></div>
                                     </div>
-                                    <?php
+                                <?php
                                 }
                                 ?>
                             </div>
                         </div>
                         <!--                        <div class="clearfix margin-bottom-40"></div>
-                                                <div class="_btn-dhbs"><button data-toggle="modal" data-target="#myModal-dhbs"><?//= Yii::t('app', 'Make an appointment with your doctor') ?></button></div>-->
+                                                <div class="_btn-dhbs"><button data-toggle="modal" data-target="#myModal-dhbs"><? //= Yii::t('app', 'Make an appointment with your doctor')
+                                                                                                                                ?></button></div>-->
                     </div>
                 </div>
             </div>
         </div>
 
-        <?php
+    <?php
     }
     ?>
     <?php /*
@@ -321,7 +321,7 @@ echo \backend\models\AuthAssignment::tableName();
                         $newOne = Posts::find()->where('status = 1 and feature = 1 and parent = ' . $tintucs['id'])->orderBy('number asc, id desc')->one();
                         $newAll = Posts::find()->where('status = 1 and parent = ' . $tintucs['id'])->offset(1)->orderBy('number asc, id desc')->asArray()->all();
                     }
-                    ?>
+                ?>
                     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 padding-left-0">
 
 
@@ -340,22 +340,24 @@ echo \backend\models\AuthAssignment::tableName();
                                     } else {
                                         $imgOne = '/frontend/web/desktop/images/no-img.jpg';
                                     }
-                                    ?>
+                                ?>
                                     <div class="hover14">
-                                        <a href="<?= $linkOne; ?>" title="<?= $nameOne; ?>"><figure><?= Html::img(Yii::$app->thumbnailer->get($imgOne, 375, 200, 50, ImageThumb::THUMBNAIL_INSET), ['alt' => $nameOne, 'class' => 'lazy', 'data-original' => Yii::$app->thumbnailer->get($imgOne, 375, 200, 50, ImageThumb::THUMBNAIL_INSET)]); ?></figure></a>
+                                        <a href="<?= $linkOne; ?>" title="<?= $nameOne; ?>">
+                                            <figure><?= Html::img(Yii::$app->thumbnailer->get($imgOne, 375, 200, 50, ImageThumb::THUMBNAIL_INSET), ['alt' => $nameOne, 'class' => 'lazy', 'data-original' => Yii::$app->thumbnailer->get($imgOne, 375, 200, 50, ImageThumb::THUMBNAIL_INSET)]); ?></figure>
+                                        </a>
                                     </div>
                                     <div class="_nameOne"><a href="<?= $linkOne; ?>" title="<?= $nameOne; ?>"><?= $nameOne; ?></a></div>
                                     <div class="datenew"><?= $date ?></div>
                                     <div class="_desOne"><?= Yii::$app->MyComponent->myTruncate($desOne, 210, " ", "..."); ?></div>
 
-                                    <?php
+                                <?php
                                 }
                                 ?>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padding-left-0">
                                 <?php
                                 if ($newAll) {
-                                    ?>
+                                ?>
                                     <ul class="_scrollvert">
                                         <?php
                                         foreach ($newAll as $items) :
@@ -363,11 +365,13 @@ echo \backend\models\AuthAssignment::tableName();
                                             $nameN = $items['name_' . Yii::$app->language];
                                             $desN = $items['des_' . Yii::$app->language];
                                             $imgN = $items['image'];
-                                            ?>
+                                        ?>
                                             <li class="news-item">
                                                 <div class="row">
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 padding-left-0 padding-right-0">
-                                                        <div class="hover15"><a href="<?= $linkN; ?>" title="<?= $nameN; ?>"><figure><?= Html::img(Yii::$app->thumbnailer->get($imgN, 130, 115, 50, ImageThumb::THUMBNAIL_INSET), ['alt' => $nameN, 'class' => 'lazy', 'data-original' => Yii::$app->thumbnailer->get($imgN, 130, 115, 50, ImageThumb::THUMBNAIL_INSET)]); ?></figure></a></div>
+                                                        <div class="hover15"><a href="<?= $linkN; ?>" title="<?= $nameN; ?>">
+                                                                <figure><?= Html::img(Yii::$app->thumbnailer->get($imgN, 130, 115, 50, ImageThumb::THUMBNAIL_INSET), ['alt' => $nameN, 'class' => 'lazy', 'data-original' => Yii::$app->thumbnailer->get($imgN, 130, 115, 50, ImageThumb::THUMBNAIL_INSET)]); ?></figure>
+                                                            </a></div>
                                                     </div>
                                                     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 padding-left-10">
                                                         <div class="_nameAll"><a href="<?= $linkN; ?>" title="<?= $nameN; ?>"><?= $nameN; ?></a></div>
@@ -376,17 +380,17 @@ echo \backend\models\AuthAssignment::tableName();
                                                 </div>
                                                 <div class="clearfix margin-bottom-20"></div>
                                             </li>
-                                            <?php
+                                        <?php
                                         endforeach;
                                         ?>
                                     </ul>
-                                    <?php
+                                <?php
                                 }
                                 ?>
                             </div>
                         </div>
                     </div>
-                    <?php
+                <?php
                 }
                 ?>
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 padding-left-0">
@@ -402,39 +406,40 @@ echo \backend\models\AuthAssignment::tableName();
                         } else {
                             $duanOne = Posts::find()->where('status = 1 and feature = 1 and parent = ' . $duannoibat['id'])->orderBy('number asc, id desc')->all();
                         }
-                        ?>
+                    ?>
                         <div class="tieude_duan"><span><?= Yii::t('app', 'Outstanding project') ?></span></div>
-                      <div class="owl-carousel owl-theme owl-carousel1-brands">
-                        <?php
-                        if ($duanOne) {
-                          foreach ($duanOne as $keyP => $valueP) {
-                            $nameOne = $valueP['name_' . Yii::$app->language];
-                            $desOne = $valueP['des_' . Yii::$app->language];
-                            $linkOne = Yii::$app->urlManager->createUrl('/chi-tiet-bai-viet/' . $valueP['slug']);
-                            $date = date_format(date_create($valueP['created_date']), 'd/m/Y');
-                            if ($valueP['image']) {
-                                $imgOne = $valueP['image'];
-                            } else {
-                                $imgOne = '/frontend/web/desktop/images/no-img.jpg';
-                            }
+                        <div class="owl-carousel owl-theme owl-carousel1-brands">
+                            <?php
+                            if ($duanOne) {
+                                foreach ($duanOne as $keyP => $valueP) {
+                                    $nameOne = $valueP['name_' . Yii::$app->language];
+                                    $desOne = $valueP['des_' . Yii::$app->language];
+                                    $linkOne = Yii::$app->urlManager->createUrl('/chi-tiet-bai-viet/' . $valueP['slug']);
+                                    $date = date_format(date_create($valueP['created_date']), 'd/m/Y');
+                                    if ($valueP['image']) {
+                                        $imgOne = $valueP['image'];
+                                    } else {
+                                        $imgOne = '/frontend/web/desktop/images/no-img.jpg';
+                                    }
                             ?>
-                            
+
 
                                     <div class="hinh_duan>
                                     st
-                                        <a href="<?= $linkOne; ?>" title="<?= $nameOne; ?>"> <?= Html::img(Yii::$app->thumbnailer->get($imgOne, 380, 280, 50, ImageThumb::THUMBNAIL_INSET), ['alt' => $nameOne, 'class' => 'lazy', 'data-original' => Yii::$app->thumbnailer->get($imgOne, 380, 280, 50, ImageThumb::THUMBNAIL_INSET)]); ?></a>
-                                    <!--     <div class="xemthem_da"><a href="<?= $linkOne ?>"><//?= Yii::t('app', 'Read more') ?></a></div> -->
+                                        <a href=" <?= $linkOne; ?>" title="<?= $nameOne; ?>"> <?= Html::img(Yii::$app->thumbnailer->get($imgOne, 380, 280, 50, ImageThumb::THUMBNAIL_INSET), ['alt' => $nameOne, 'class' => 'lazy', 'data-original' => Yii::$app->thumbnailer->get($imgOne, 380, 280, 50, ImageThumb::THUMBNAIL_INSET)]); ?></a>
+                                        <!--     <div class="xemthem_da"><a href="<?= $linkOne ?>"><//?= Yii::t('app', 'Read more') ?></a></div> -->
 
 
                                         <div class="_nameDv"><a href="<?= $linkOne ?>" title="<?= $nameOne; ?>" style="font: 14px 'AvertaStdCY-Bold';"><span><?= $nameOne; ?></span></a></div>
                                         <div class="_btnab"><a href="<?= $linkOne ?>" title="xem thêm dự án">Xem thêm</a></div>
-                                        
-                                    </div>
-                                 
 
-                        <?php } } ?>
+                                    </div>
+
+
+                            <?php }
+                            } ?>
                         </div>
-                        <?php
+                    <?php
                     } ?>
                 </div>
             </div>
@@ -530,5 +535,5 @@ echo \backend\models\AuthAssignment::tableName();
   </div>
   </div>
   </div>
- * 
+ *
  */ ?>
