@@ -7,6 +7,7 @@ use TonchikTm\Yii2Thumb\ImageThumb;
 use kartik\datetime\DateTimePicker;
 use backend\models\Videos;
 use backend\models\Gallery;
+use backend\models\Products;
 
 /* @var $this yii\web\View */
 
@@ -21,6 +22,9 @@ include 'swiper.php';
 ?>
 
 <div class="site-index">
+    <!-- Categories -->
+    <?= $this->render('../category/index', ['categories' => $categories]) ?>
+
     <!-- Introduction -->
     <?php
     if ($pageOne) {
@@ -51,7 +55,37 @@ include 'swiper.php';
     <?php
     }
     ?>
+    <!-- Products Section -->
 
+    <section class="bg-white py-8">
+
+        <?php foreach ($categories as $category):
+            $products = Products::find()->where(['parent' => $category->id])->all();
+        ?>
+            <div class="container mx-auto">
+                <h2 class="text-center font-utm-avo text-3xl font-bold text-pink-500"><?= $category->{'name_' . Yii::$app->language} ?></h2>
+                <div class="decoration my-2">
+                    <img src="../images/products-decoration.png" alt="Decoration" class="mx-auto" />
+                </div>
+                <div class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
+                    <?php foreach ($products as $product): ?>
+
+                        <div class="overflow-hidden rounded-lg border border-[#ededed] bg-white">
+                            <img src="<?= $product->image ?>" alt="Product Image" class="h-48 w-full border-b border-[#ededed] object-cover p-2" />
+                            <div class="p-4 text-center">
+                                <h3 class="mb-2 font-roboto text-xl font-bold text-gray-900"><?= $product->{'name_' . Yii::$app->language} ?></h3>
+                                <p class="font-roboto">
+                                    Giá:
+                                    <span class="font-roboto font-bold text-red-600"><?= $product->price ? number_format($product->price) : 'LIÊN HỆ' ?></span>
+                                </p>
+                            </div>
+                        </div>
+                    <?php endforeach ?>
+                </div>
+            </div>
+        <?php endforeach ?>
+
+    </section>
     <!-- Images and News Section -->
     <div class="_bgtt">
         <?= $this->render('_img_and_news', ['tintucs' => $tintucs]); ?>

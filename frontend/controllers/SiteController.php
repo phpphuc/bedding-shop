@@ -17,6 +17,7 @@ use backend\models\AuthItem;
 use frontend\components\OpenGraph;
 use frontend\components\MetaTags;
 use backend\models\Page;
+use backend\models\Categorys;
 use backend\models\Postscat;
 use backend\models\Camket;
 use backend\models\Camnhan;
@@ -29,12 +30,14 @@ use backend\models\Khachhang;
 /**
  * Site controller
  */
-class SiteController extends MyController {
+class SiteController extends MyController
+{
 
     /**
      * {@inheritdoc}
      */
-    public function behaviors() {
+    public function behaviors()
+    {
         return [
             'access' => [
                 'class' => AccessControl::className(),
@@ -64,7 +67,8 @@ class SiteController extends MyController {
     /**
      * {@inheritdoc}
      */
-    public function actions() {
+    public function actions()
+    {
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
@@ -73,17 +77,18 @@ class SiteController extends MyController {
                 'class' => 'lubosdz\captchaExtended\CaptchaExtendedAction',
                 // optionally, set mode and obfuscation properties e.g.:
                 'mode' => 'words', //default|math|mathverbal|logical|words
-            //'mode' => CaptchaExtendedAction::MODE_MATH,
-            //'resultMultiplier' => 5,
-            //'lines' => 5,
-            //'density' => 10,
-            //'height' => 50,
-            //'width' => 150,
+                //'mode' => CaptchaExtendedAction::MODE_MATH,
+                //'resultMultiplier' => 5,
+                //'lines' => 5,
+                //'density' => 10,
+                //'height' => 50,
+                //'width' => 150,
             ],
         ];
     }
 
-    public function actionLanguage() {
+    public function actionLanguage()
+    {
         if (isset($_POST['lang'])) {
             Yii::$app->language = $_POST['lang'];
             $cookie = new \yii\web\Cookie([
@@ -99,29 +104,31 @@ class SiteController extends MyController {
      *
      * @return mixed
      */
-    public function actionIndex() {
+    public function actionIndex()
+    {
 
         MetaTags::generate(
-                [
-                    'keywords' => $this->website['keyword'],
-                    'description' => $this->website['description'],
-                    'twitter:card' => 'summary',
-                ]
+            [
+                'keywords' => $this->website['keyword'],
+                'description' => $this->website['description'],
+                'twitter:card' => 'summary',
+            ]
         );
         OpenGraph::generate(
-                [
-                    'og:site_name' => $this->website['name_' . \Yii::$app->language],
-                    'og:title' => $this->website['title'],
-                    'og:description' => $this->website['description'],
-                    'og:type' => 'website',
-                    'og:image' => \Yii::$app->request->hostInfo . $this->website['logo'],
-                    'og:url' => \Yii::$app->request->hostInfo,
-                ]
+            [
+                'og:site_name' => $this->website['name_' . \Yii::$app->language],
+                'og:title' => $this->website['title'],
+                'og:description' => $this->website['description'],
+                'og:type' => 'website',
+                'og:image' => \Yii::$app->request->hostInfo . $this->website['logo'],
+                'og:url' => \Yii::$app->request->hostInfo,
+            ]
         );
 
         $pageOne = Page::find()->where(['status' => 1, 'homepage' => 1, 'position' => 2])->orderBy('number asc, id desc')->asArray()->one();
-        $page = Page::findOne(['id'=>2]);
-//        echo $page;
+        $page = Page::findOne(['id' => 2]);
+        //        echo $page;
+
         $bacsi = Bacsi::find()->orderBy('number asc, id desc')->asArray()->all();
         $chinhanh = Chinhanh::find()->orderBy('number asc, id desc')->asArray()->all();
         $dichvus = Postscat::find()->where(['status' => 1, 'homepage' => 1, 'id' => 16])->orderBy('number asc, id desc')->one();
@@ -131,14 +138,17 @@ class SiteController extends MyController {
         $visaos = Camket::find()->orderBy('number asc, id desc')->all();
         $camnhan = Camnhan::find()->orderBy('number asc, id desc')->all();
         $video = Videos::find()->where(['status' => 1])->orderBy('number asc, id desc')->one();
+
+        $categories = Categorys::find()->where(['status' => 1])->all();
         if ($this->isMobile) {
             return $this->render('index_m', ['dichvus' => $dichvus, 'camnang' => $camnang, 'visaos' => $visaos, 'camnhan' => $camnhan, 'pageOne' => $pageOne, 'bacsi' => $bacsi, 'chinhanh' => $chinhanh, 'video' => $video, 'tintucs' => $tintucs, 'duannoibat' => $duannoibat]);
         } else {
-            return $this->render('index', ['dichvus' => $dichvus, 'camnang' => $camnang, 'visaos' => $visaos, 'camnhan' => $camnhan, 'pageOne' => $pageOne, 'bacsi' => $bacsi, 'chinhanh' => $chinhanh, 'video' => $video, 'tintucs' => $tintucs, 'duannoibat' => $duannoibat]);
+            return $this->render('index', ['dichvus' => $dichvus, 'camnang' => $camnang, 'visaos' => $visaos, 'camnhan' => $camnhan, 'pageOne' => $pageOne, 'bacsi' => $bacsi, 'chinhanh' => $chinhanh, 'video' => $video, 'tintucs' => $tintucs, 'duannoibat' => $duannoibat, 'categories' => $categories]);
         }
     }
 
-    public function actionDangkyhen() {
+    public function actionDangkyhen()
+    {
         $model = new Khachhang();
         $model->fullname = $_POST['namedhbs'];
         $model->phone = $_POST['phonedhbs'];
@@ -156,7 +166,8 @@ class SiteController extends MyController {
         }
     }
 
-    public function actionDangky() {
+    public function actionDangky()
+    {
         $model = new Baogia();
         $model->fullname = $_POST['namedk'];
         $model->phone = $_POST['phonedk'];
@@ -172,7 +183,8 @@ class SiteController extends MyController {
         }
     }
 
-    public function actionShowdv() {
+    public function actionShowdv()
+    {
         $model = \backend\models\Posts::find()->where(['id' => $_POST['id']])->one();
         return $this->renderAjax('content', ['model' => $model]);
     }
@@ -182,7 +194,8 @@ class SiteController extends MyController {
      *
      * @return mixed
      */
-    public function actionLogin() {
+    public function actionLogin()
+    {
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -194,7 +207,7 @@ class SiteController extends MyController {
             $model->password = '';
 
             return $this->render('login', [
-                        'model' => $model,
+                'model' => $model,
             ]);
         }
     }
@@ -204,7 +217,8 @@ class SiteController extends MyController {
      *
      * @return mixed
      */
-    public function actionLogout() {
+    public function actionLogout()
+    {
         Yii::$app->user->logout();
 
         return $this->goHome();
@@ -215,7 +229,8 @@ class SiteController extends MyController {
      *
      * @return mixed
      */
-    public function actionContact() {
+    public function actionContact()
+    {
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail($this->website['email'])) {
@@ -228,11 +243,11 @@ class SiteController extends MyController {
         } else {
             if ($this->isMobile) {
                 return $this->render('contact_m', [
-                            'model' => $model,
+                    'model' => $model,
                 ]);
             } else {
                 return $this->render('contact', [
-                            'model' => $model,
+                    'model' => $model,
                 ]);
             }
         }
@@ -243,7 +258,8 @@ class SiteController extends MyController {
      *
      * @return mixed
      */
-    public function actionAbout() {
+    public function actionAbout()
+    {
         return $this->render('about');
     }
 
@@ -252,7 +268,8 @@ class SiteController extends MyController {
      *
      * @return mixed
      */
-    public function actionSignup() {
+    public function actionSignup()
+    {
         $model = new SignupForm();
         $authItems = AuthItem::find()->all();
         if ($model->load(Yii::$app->request->post())) {
@@ -264,8 +281,8 @@ class SiteController extends MyController {
         }
 
         return $this->render('signup', [
-                    'model' => $model,
-                    'authItems' => $authItems,
+            'model' => $model,
+            'authItems' => $authItems,
         ]);
     }
 
@@ -274,7 +291,8 @@ class SiteController extends MyController {
      *
      * @return mixed
      */
-    public function actionRequestPasswordReset() {
+    public function actionRequestPasswordReset()
+    {
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
@@ -287,7 +305,7 @@ class SiteController extends MyController {
         }
 
         return $this->render('requestPasswordResetToken', [
-                    'model' => $model,
+            'model' => $model,
         ]);
     }
 
@@ -298,7 +316,8 @@ class SiteController extends MyController {
      * @return mixed
      * @throws BadRequestHttpException
      */
-    public function actionResetPassword($token) {
+    public function actionResetPassword($token)
+    {
         try {
             $model = new ResetPasswordForm($token);
         } catch (InvalidParamException $e) {
@@ -312,8 +331,7 @@ class SiteController extends MyController {
         }
 
         return $this->render('resetPassword', [
-                    'model' => $model,
+            'model' => $model,
         ]);
     }
-
 }

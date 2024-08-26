@@ -34,7 +34,7 @@
                 <li><a href="<?php echo Yii::$app->homeUrl; ?>/config/update"><i class="far fa-circle"></i> Cấu hình website</a></li>
                 <li><a href="<?php echo Yii::$app->homeUrl; ?>/configs/index"><i class="far fa-circle"></i> Tùy chỉnh website</a></li>
                 <li><a href="<?php echo Yii::$app->homeUrl; ?>/menu/index?type=main"><i class="far fa-circle"></i> Menu chính</a></li>
-<!--                <li><a href="</?php echo Yii::$app->homeUrl; ?>/menu/index?type=left"><i class="far fa-circle"></i> Menu footer</a></li>
+                <!--                <li><a href="</?php echo Yii::$app->homeUrl; ?>/menu/index?type=left"><i class="far fa-circle"></i> Menu footer</a></li>
                 <li><a href="</?php echo Yii::$app->homeUrl; ?>/menu/index?type=mobile"><i class="far fa-circle"></i> Menu mobile</a></li>-->
             </ul>
         </li>
@@ -71,7 +71,7 @@
                 <li><a href="<?php echo Yii::$app->homeUrl; ?>/bacsi/index"><i class="far fa-circle"></i> Đội ngũ</a></li>
             </ul>
         </li>
-<!--        <li class="treeview">
+        <!--        <li class="treeview">
             <a href="#">
                 <i class="fas fa-hotel"></i> <span>Danh Mục Chi Nhánh</span>
                 <span class="pull-right-container">
@@ -82,7 +82,7 @@
                 <li><a href="<//?php echo Yii::$app->homeUrl; ?>/chinhanh/index"><i class="far fa-circle"></i> Chi nhánh</a></li>
             </ul>
         </li>-->
-<!--        <li class="treeview">
+        <!--        <li class="treeview">
             <a href="#">
                 <i class="fas fa-trophy"></i> <span>Cảm Nhận Khách Hàng</span>
                 <span class="pull-right-container">
@@ -117,19 +117,19 @@
                         <li><a href="</?php echo Yii::$app->homeUrl; ?>/combos/index"><i class="far fa-circle"></i> Combos</a></li>
                     </ul>
                 </li>-->
-        <!--        <li class="treeview">
-                    <a href="#">
-                        <i class="fas fa-cubes"></i> <span>Quản Lý Sản Phẩm</span>
-                        <span class="pull-right-container">
-                            <i class="fas fa-angle-left"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="</?php echo Yii::$app->homeUrl; ?>/categorys/index"><i class="far fa-circle"></i> Danh Mục</a></li>
-                        <li><a href="</?php echo Yii::$app->homeUrl; ?>/products/index"><i class="far fa-circle"></i> Sản Phẩm</a></li>
-                    </ul>
-                </li>-->
-<!--                <li class="treeview">
+        <li class="treeview">
+            <a href="#">
+                <i class="fas fa-cubes"></i> <span>Quản Lý Sản Phẩm</span>
+                <span class="pull-right-container">
+                    <i class="fas fa-angle-left"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="<?php echo Yii::$app->homeUrl; ?>/categorys/index"><i class="far fa-circle"></i> Danh Mục</a></li>
+                <li><a href="<?php echo Yii::$app->homeUrl; ?>/products/index"><i class="far fa-circle"></i> Sản Phẩm</a></li>
+            </ul>
+        </li>
+        <!--                <li class="treeview">
                     <a href="#">
                         <i class="far fa-file-image"></i> <span>Quản Lý Thư Viện</span>
                         <span class="pull-right-container">
@@ -170,7 +170,7 @@
                 </span>
             </a>
             <ul class="treeview-menu">
-<!--                <li><a href="</?php echo Yii::$app->homeUrl; ?>/slideshowcat/index"><i class="far fa-circle"></i> Danh Mục</a></li>-->
+                <!--                <li><a href="</?php echo Yii::$app->homeUrl; ?>/slideshowcat/index"><i class="far fa-circle"></i> Danh Mục</a></li>-->
                 <li><a href="<?php echo Yii::$app->homeUrl; ?>/slideshow/index"><i class="far fa-circle"></i> Hình ảnh</a></li>
             </ul>
         </li>
@@ -185,7 +185,7 @@
                 <li><a href="<?php echo Yii::$app->homeUrl; ?>/gallery/index"><i class="far fa-circle"></i> Social</a></li>
             </ul>
         </li>
-<!--        <li class="treeview">
+        <!--        <li class="treeview">
             <a href="#">
                 <i class="fas fa-video"></i> <span>Quản Lý Videos</span>
                 <span class="pull-right-container">
@@ -218,7 +218,7 @@
             </a>
             <ul class="treeview-menu">
                 <li><a href="<?php echo Yii::$app->homeUrl; ?>/baogia/index"><i class="far fa-circle"></i> Hẹn thông thường</a></li>
-<!--                <li><a href="<//?php echo Yii::$app->homeUrl; ?>/khachhang/index"><i class="far fa-circle"></i> Hẹn với bác sĩ</a></li>-->
+                <!--                <li><a href="<//?php echo Yii::$app->homeUrl; ?>/khachhang/index"><i class="far fa-circle"></i> Hẹn với bác sĩ</a></li>-->
             </ul>
         </li>
         <li class="treeview">

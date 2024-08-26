@@ -8,46 +8,47 @@ use backend\models\Categorys;
 use backend\models\Products;
 use TonchikTm\Yii2Thumb\ImageThumb;
 ?>
-<div class="_slide">
-     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-            <!-- Wrapper for slides -->
+<div class="_slide container">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Wrapper for slides -->
 
-            
-    <?php
-    $img_slider = Camket::find()->orderBy('number asc, id desc')->asArray()->all();
-    $slideshows = Slideshow::find()->where(['parent' => 1, 'homepage' => 1])->orderBy('number asc, id desc')->all();
-    if ($slideshows) {
+
+        <?php
+        $img_slider = Camket::find()->orderBy('number asc, id desc')->asArray()->all();
+        $slideshows = Slideshow::find()->where(['parent' => 1, 'homepage' => 1])->orderBy('number asc, id desc')->all();
+        if ($slideshows) {
         ?>
-   <div class="carousel-inner">
+            <div class="carousel-inner">
                 <?php
                 $stt = 0;
                 foreach ($slideshows as $items_img) {
                     $link = $items_img['link'];
-                    ?>
-                    <div class="item <?php if($stt == 0){?>active<?php } ?>">
-                    <?= ImageThumb::thumbPicture(Yii::getAlias('@rootpath/' . $items_img['image']), 1349, 480, ['source' => ['mode' => ImageThumb::THUMBNAIL_OUTBOUND, 'quality' => 50], 'img' => ['mode' => ImageThumb::THUMBNAIL_OUTBOUND, 'quality' => 50, 'attributes' => ['alt' => $items_img['name_' . Yii::$app->language], 'class' => 'lazy', 'id' => 'wows_' . $stt]]]); ?>
-                       
+                ?>
+                    <div class="item <?php if ($stt == 0) { ?>active<?php } ?>">
+
+                        <?= ImageThumb::thumbPicture(Yii::getAlias('@rootpath/' . $items_img['image']), 1349, 480, ['source' => ['mode' => ImageThumb::THUMBNAIL_OUTBOUND, 'quality' => 50], 'img' => ['mode' => ImageThumb::THUMBNAIL_OUTBOUND, 'quality' => 50, 'attributes' => ['alt' => $items_img['name_' . Yii::$app->language], 'class' => 'lazy', 'id' => 'wows_' . $stt]]]); ?>
+
                     </div>
-                    <?php
+                <?php
                     $stt++;
                 }
                 ?>
-   </div>
-                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            </div>
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
 
-                    <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="glyphicon glyphicon-chevron-left"></span>
 
-                </a>
+            </a>
 
-                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
 
-                    <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="glyphicon glyphicon-chevron-right"></span>
 
-                </a>
+            </a>
 
-         
+
         <?php
-    }
-    ?>
-                   </div>
-        </div>
+        }
+        ?>
+    </div>
+</div>

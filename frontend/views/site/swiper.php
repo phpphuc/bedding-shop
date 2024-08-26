@@ -21,11 +21,13 @@ $this->registerJs(<<<JS
             prevEl: '.swiper-button-prev',
         },
     });
+
 JS);
 $slides = Slideshow::find()->where(['parent' => 1, 'homepage' => 1])->orderBy('number asc, id desc')->all();
 ?>
 <div class="">
-  <div class="swiper-container  m-auto bg-purple-400">
+  <div class="swiper-container  m-auto ">
+    <!-- bg-purple-400 -->
     <div class="swiper-wrapper">
       <?php
       foreach ($slides as $slide) {

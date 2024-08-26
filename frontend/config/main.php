@@ -1,14 +1,17 @@
 <?php
 
 $params = array_merge(
-        require __DIR__ . '/../../common/config/params.php', require __DIR__ . '/../../common/config/params-local.php', require __DIR__ . '/params.php', require __DIR__ . '/params-local.php'
+    require __DIR__ . '/../../common/config/params.php',
+    require __DIR__ . '/../../common/config/params-local.php',
+    require __DIR__ . '/params.php',
+    require __DIR__ . '/params-local.php'
 );
 
 return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-   // 'bootstrap' => ['log', 'assetsAutoCompress'],
+    // 'bootstrap' => ['log', 'assetsAutoCompress'],
     'homeUrl' => '/',
     'controllerNamespace' => 'frontend\controllers',
     'modules' => [
@@ -17,10 +20,10 @@ return [
             'confirmWithin' => 21600,
             'cost' => 12,
             'admins' => ['admin'],
-//            'modelMap' => [
-//                'RegistrationForm' => 'frontend\models\RegistrationForm',
-//                'Profile' => 'frontend\models\Profile',
-//            ],
+            //            'modelMap' => [
+            //                'RegistrationForm' => 'frontend\models\RegistrationForm',
+            //                'Profile' => 'frontend\models\Profile',
+            //            ],
             'controllerMap' => [
                 'registration' => [
                     'class' => \dektrium\user\controllers\RegistrationController::className(),
@@ -41,18 +44,18 @@ return [
             'components' => [
                 'generator' => [
                     'class' => \execut\robotsTxt\Generator::class,
-//                    'sitemap' => [
-//                        '/sitemap/index',
-//                    ],
+                    //                    'sitemap' => [
+                    //                        '/sitemap/index',
+                    //                    ],
                     'sitemap' => 'http' . (empty($_SERVER['HTTPS']) ? '' : 's') . '://' . $_SERVER['HTTP_HOST'] . '/sitemap.xml',
                     'userAgent' => [
                         '*' => [
                             'Disallow' => [
-//                                'noIndexedHtmlFile.html',
-//                                [
-//                                    'notIndexedModule/noIndexedController/noIndexedAction',
-//                                    'noIndexedActionParam' => 'noIndexedActionParamValue',
-//                                ]
+                                //                                'noIndexedHtmlFile.html',
+                                //                                [
+                                //                                    'notIndexedModule/noIndexedController/noIndexedAction',
+                                //                                    'noIndexedActionParam' => 'noIndexedActionParamValue',
+                                //                                ]
                                 '/backend/',
                             ],
                             'Allow' => [
@@ -84,16 +87,16 @@ return [
         'authClientCollection' => [
             'class' => \yii\authclient\Collection::className(),
             'clients' => [
-//                'facebook' => [
-//                    'class' => 'dektrium\user\clients\Facebook',
-//                    'clientId' => '707869099689049',
-//                    'clientSecret' => 'a3b4bd2362093e2fbac51685ec362dfc',
-//                ],
-//                'google' => [
-//                    'class' => 'dektrium\user\clients\Google',
-//                    'clientId' => '569773122827-mp79c8bh4p98e09lmu8aufonoptjhh83.apps.googleusercontent.com',
-//                    'clientSecret' => 'cvcGX-pQu9PJ_8-h2Nr4UWuH',
-//                ],
+                //                'facebook' => [
+                //                    'class' => 'dektrium\user\clients\Facebook',
+                //                    'clientId' => '707869099689049',
+                //                    'clientSecret' => 'a3b4bd2362093e2fbac51685ec362dfc',
+                //                ],
+                //                'google' => [
+                //                    'class' => 'dektrium\user\clients\Google',
+                //                    'clientId' => '569773122827-mp79c8bh4p98e09lmu8aufonoptjhh83.apps.googleusercontent.com',
+                //                    'clientSecret' => 'cvcGX-pQu9PJ_8-h2Nr4UWuH',
+                //                ],
             ],
         ],
         'socialShare' => [
@@ -139,41 +142,41 @@ return [
         'mobileDetect' => [
             'class' => '\skeeks\yii2\mobiledetect\MobileDetect'
         ],
-       // 'assetsAutoCompress' => [
-       //     'class'   => '\skeeks\yii2\assetsAuto\AssetsAutoCompressComponent',
-       //     'enabled' => false,
+        // 'assetsAutoCompress' => [
+        //     'class'   => '\skeeks\yii2\assetsAuto\AssetsAutoCompressComponent',
+        //     'enabled' => false,
 
-       //     'readFileTimeout' => 3,           //Time in seconds for reading each asset file
+        //     'readFileTimeout' => 3,           //Time in seconds for reading each asset file
 
-       //     'jsCompress'                => true,        //Enable minification js in html code
-       //     'jsCompressFlaggedComments' => false,        //Cut comments during processing js
+        //     'jsCompress'                => true,        //Enable minification js in html code
+        //     'jsCompressFlaggedComments' => false,        //Cut comments during processing js
 
-       //     'cssCompress' => true,        //Enable minification css in html code
+        //     'cssCompress' => true,        //Enable minification css in html code
 
-       //     'cssFileCompile'        => true,        //Turning association css files
-       //     'cssFileRemouteCompile' => false,       //Trying to get css files to which the specified path as the remote file, skchat him to her.
-       //     'cssFileCompress'       => true,        //Enable compression and processing before being stored in the css file
-       //     'cssFileBottom'         => false,       //Moving down the page css files
-       //     'cssFileBottomLoadOnJs' => false,       //Transfer css file down the page and uploading them using js
+        //     'cssFileCompile'        => true,        //Turning association css files
+        //     'cssFileRemouteCompile' => false,       //Trying to get css files to which the specified path as the remote file, skchat him to her.
+        //     'cssFileCompress'       => true,        //Enable compression and processing before being stored in the css file
+        //     'cssFileBottom'         => false,       //Moving down the page css files
+        //     'cssFileBottomLoadOnJs' => false,       //Transfer css file down the page and uploading them using js
 
-       //     'jsFileCompile'                 => true,        //Turning association js files
-       //     'jsFileRemouteCompile'          => false,       //Trying to get a js files to which the specified path as the remote file, skchat him to her.
-       //     'jsFileCompress'                => true,        //Enable compression and processing js before saving a file
-       //     'jsFileCompressFlaggedComments' => true,        //Cut comments during processing js
+        //     'jsFileCompile'                 => true,        //Turning association js files
+        //     'jsFileRemouteCompile'          => false,       //Trying to get a js files to which the specified path as the remote file, skchat him to her.
+        //     'jsFileCompress'                => true,        //Enable compression and processing js before saving a file
+        //     'jsFileCompressFlaggedComments' => true,        //Cut comments during processing js
 
-       //     'noIncludeJsFilesOnPjax' => true,        //Do not connect the js files when all pjax requests
+        //     'noIncludeJsFilesOnPjax' => true,        //Do not connect the js files when all pjax requests
 
-       //     'htmlFormatter' => [
-       //         //Enable compression html
-       //         'class'         => 'skeeks\yii2\assetsAuto\formatters\html\TylerHtmlCompressor',
-       //         'extra'         => true,       //use more compact algorithm
-       //         'noComments'    => true,        //cut all the html comments
-       //         'maxNumberRows' => 50000,       //The maximum number of rows that the formatter runs on
-       //     ],
-       // ],
-       // 'assetManager' => [
-       //     'appendTimestamp' => true,
-       // ],
+        //     'htmlFormatter' => [
+        //         //Enable compression html
+        //         'class'         => 'skeeks\yii2\assetsAuto\formatters\html\TylerHtmlCompressor',
+        //         'extra'         => true,       //use more compact algorithm
+        //         'noComments'    => true,        //cut all the html comments
+        //         'maxNumberRows' => 50000,       //The maximum number of rows that the formatter runs on
+        //     ],
+        // ],
+        // 'assetManager' => [
+        //     'appendTimestamp' => true,
+        // ],
         'cart' => [
             'class' => 'devanych\cart\Cart',
             'storageClass' => 'devanych\cart\storage\SessionStorage',
@@ -192,11 +195,11 @@ return [
             'csrfParam' => '_csrf-frontend',
             'baseUrl' => '',
         ],
-//        'user' => [
-//            'identityClass' => 'common\models\User',
-//            'enableAutoLogin' => true,
-//            'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
-//        ],
+        //        'user' => [
+        //            'identityClass' => 'common\models\User',
+        //            'enableAutoLogin' => true,
+        //            'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
+        //        ],
         'session' => [
             // this is the name of the session cookie used for login on the frontend
             'name' => 'advanced-frontend',
@@ -223,20 +226,20 @@ return [
             'rules' => [
                 ['pattern' => 'sitemap', 'route' => 'sitemap/index', 'suffix' => '.xml'],
                 ['pattern' => 'robots', 'route' => 'robotsTxt/web/index', 'suffix' => '.txt'],
-//                'rating' => 'products/rating',
-//                'san-pham' => 'products/index',
-//                'san-pham-sale' => 'products/sale',
-//                'san-pham/<slug>' => 'products/cate',
-//                'chi-tiet-san-pham/<slug>' => 'products/view',
-//                'tag/<tag>' => 'products/tag',
-               'video-clip' => 'videos/index',
+                //                'rating' => 'products/rating',
+                //                'san-pham' => 'products/index',
+                //                'san-pham-sale' => 'products/sale',
+                //                'san-pham/<slug>' => 'products/cate',
+                //                'chi-tiet-san-pham/<slug>' => 'products/view',
+                //                'tag/<tag>' => 'products/tag',
+                'video-clip' => 'videos/index',
                 'bai-viet/<slug>' => 'page/index',
                 'danh-muc/<slug>' => 'posts/index',
                 'chi-tiet-bai-viet/<slug>' => 'posts/view',
                 'tag-post/<tag>' => 'posts/tag',
                 'lien-he' => 'site/contact',
-               'thu-vien' => 'thuvien/index',
-               'thu-vien/<slug>' => 'thuvien/view',
+                'thu-vien' => 'thuvien/index',
+                'thu-vien/<slug>' => 'thuvien/view',
                 'gio-hang' => 'cart/index',
                 'changelanguage' => 'site/language',
             ],

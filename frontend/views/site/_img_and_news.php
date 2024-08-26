@@ -40,7 +40,7 @@ use backend\models\Posts;
           <!-- News Section -->
           <div class="md:w-2/3">
             <div class="mb-4 flex gap-2">
-              <h2 class="whitespace-nowrap font-tahoma text-xl font-bold text-primary"><?= Yii::t('app', 'News and events') ?>TIN TỨC NỔI BẬT</h2>
+              <h2 class="whitespace-nowrap font-tahoma text-xl font-bold text-primary uppercase"><?= Yii::t('app', 'News and events') ?>TIN TỨC NỔI BẬT</h2>
               <div class="title-decor"></div>
             </div>
             <div class="gap-6 lg:flex">

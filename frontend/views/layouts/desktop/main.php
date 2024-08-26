@@ -41,7 +41,8 @@ AppAsset::register($this);
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v4.0&appId=1879502379031804&autoLogAppEvents=1"></script>
     <h1 style="display: none;"><?= Html::encode($this->title) ?></h1>
-    <?php include 'header.php'; ?>
+    <?php include 'header.php';
+    ?>
 
     <?=
     ModalAlert::widget([
@@ -54,7 +55,9 @@ AppAsset::register($this);
     <?php
     if (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') {
     ?>
-        <div style="display: none;"><?= Yii::$app->MyComponent->website['heading']; ?></div>
+        <div class="hidden" style="display: none;">
+            <?= Yii::$app->MyComponent->website['heading']; ?>
+        </div>
     <?php
     }
     ?>

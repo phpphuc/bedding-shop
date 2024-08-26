@@ -10,8 +10,8 @@ use yii\web\AssetBundle;
 class AppAsset extends AssetBundle
 {
 
-    // public $basePath = '@webroot';
-    // public $baseUrl = '@web';
+    public $basePath = '@webroot';
+    public $baseUrl = '@web';
     public $css = [
         'css/style.css',
         // 'css/bootstrap-theme.min.css',
@@ -30,26 +30,26 @@ class AppAsset extends AssetBundle
         // 'plugins/fancybox/fancybox.min.css',
         // 'plugins/aos-animate/dist/aos.css',
         // 'plugins/jquery-simplyscroll/jquery.simplyscroll.css',
-        // //'plugins/wow_book/wow_book.css',
+        // 'plugins/wow_book/wow_book.css',
         // 'desktop/style.css',
     ];
     public $js = [
-        'js/bootstrap.min.js',
-        'js/wow.min.js',
+        // 'js/bootstrap.min.js',
+        // 'js/wow.min.js',
         // 'plugins/wowslider/wowslider.js',
         // 'plugins/wowslider/script.js',
-        'plugins/OwlCarousel2/owl.carousel.min.js',
-        'js/layout.js',
+        // 'plugins/OwlCarousel2/owl.carousel.min.js',
+        // 'js/layout.js',
         // 'plugins/magiczoomplus/magiczoomplus.js',
-        'plugins/fancybox/fancybox.min.js',
-        'plugins/aos-animate/dist/aos.js',
-        'plugins/jquery-simplyscroll/jquery.simplyscroll.min.js',
-        'plugins/bootbox/bootbox.min.js',
-        //        'js/ImageTooltip.js',
-        //'js/jquery.marquee.min.js',
-        //'plugins/wow_book/wow_book.min.js',
-        'js/jquery.lazyload.js',
-        'desktop/main.js',
+        // 'plugins/fancybox/fancybox.min.js',
+        // 'plugins/aos-animate/dist/aos.js',
+        // 'plugins/jquery-simplyscroll/jquery.simplyscroll.min.js',
+        // 'plugins/bootbox/bootbox.min.js',
+        // 'js/ImageTooltip.js',
+        // 'js/jquery.marquee.min.js',
+        // 'plugins/wow_book/wow_book.min.js',
+        // 'js/jquery.lazyload.js',
+        // 'desktop/main.js',
     ];
     public $depends = [
         // 'yii\web\YiiAsset',

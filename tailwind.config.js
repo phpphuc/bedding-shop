@@ -13,7 +13,9 @@
 // }
 module.exports = {
   // content: ["./frontend/views/*/*/*.{js, php}"],
-  content: ["./frontend/**/*.php"],
+  content: ["./frontend/**/*.php", "./frontend/views/category/index.php"],
+  // content: ["./frontend/**/*.php", "./frontend/views/site/index.php"],
+  // content: ["E:/2024/365/miglobalv/frontend/views/site/index.php"],
   // content: ["./frontend/*.php"],
   theme: {
     container: {

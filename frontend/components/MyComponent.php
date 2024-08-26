@@ -16,6 +16,8 @@ class MyComponent extends Component
     {
         $this->website = \backend\models\Config::findOne(1);
         $this->config = \yii\helpers\ArrayHelper::map(\backend\models\Configs::find()->all(), 'key', 'value');
+        echo 'MyComponent init';
+
         parent::init();
     }
 
@@ -135,11 +137,12 @@ class MyComponent extends Component
             <?php
             } else {*/
 ?>
-            <li>
-                <a class="<?= ($value['model'] == "Home") ? '_active-home' : ''; ?>" href="<?= $link; ?>" title="<?= ($value['model'] == "Home") ? 'Trang chủ' : $name; ?>">
-                    <?= $name; ?>
-                </a>
-            </li>
+            <!-- <li class="nav__item"> -->
+            <a class="nav__item <?= ($value['model'] == "Home") ? '_active-home' : ''; ?>" href="<?= $link; ?>" title="<?= ($value['model'] == "Home") ? 'Trang chủ' : $name; ?>">
+                <!-- z-10 relative  -->
+                <?= $name; ?>
+            </a>
+            <!-- </li> -->
             <?php
             // }
         }

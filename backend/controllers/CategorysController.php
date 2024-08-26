@@ -17,12 +17,14 @@ use yii\web\Response;
 /**
  * CategorysController implements the CRUD actions for Categorys model.
  */
-class CategorysController extends Controller {
+class CategorysController extends Controller
+{
 
     /**
      * {@inheritdoc}
      */
-    public function behaviors() {
+    public function behaviors()
+    {
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
@@ -38,7 +40,8 @@ class CategorysController extends Controller {
      * Lists all Categorys models.
      * @return mixed
      */
-    public function actionIndex() {
+    public function actionIndex()
+    {
         $searchModel = new CategorysSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->pagination = ['pageSize' => 10,];
@@ -57,8 +60,8 @@ class CategorysController extends Controller {
         }
 
         return $this->render('index', [
-                    'searchModel' => $searchModel,
-                    'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -68,9 +71,10 @@ class CategorysController extends Controller {
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id) {
+    public function actionView($id)
+    {
         return $this->render('view', [
-                    'model' => $this->findModel($id),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -79,7 +83,8 @@ class CategorysController extends Controller {
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate() {
+    public function actionCreate()
+    {
         $model = new Categorys();
         $arrList = Categorys::find()->all();
 
@@ -90,8 +95,8 @@ class CategorysController extends Controller {
         }
 
         return $this->render('create', [
-                    'model' => $model,
-                    'arrList' => $arrList,
+            'model' => $model,
+            'arrList' => $arrList,
         ]);
     }
 
@@ -102,7 +107,8 @@ class CategorysController extends Controller {
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id) {
+    public function actionUpdate($id)
+    {
         $model = $this->findModel($id);
         $cate = new Categorys();
         $modelCategory = $cate->getCateChild($id);
@@ -128,8 +134,8 @@ class CategorysController extends Controller {
         }
 
         return $this->render('update', [
-                    'model' => $model,
-                    'arrList' => $arrList,
+            'model' => $model,
+            'arrList' => $arrList,
         ]);
     }
 
@@ -140,7 +146,8 @@ class CategorysController extends Controller {
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id) {
+    public function actionDelete($id)
+    {
         $modelCategory = (new Categorys())->getCateChild($id);
         $itemMenus = (new Menu())->getAllId('Categorys', $id);
         if ($itemMenus) {
@@ -168,7 +175,8 @@ class CategorysController extends Controller {
         return $this->redirect(['index']);
     }
 
-    public function actionBulkdelete() {
+    public function actionBulkdelete()
+    {
         $request = Yii::$app->request;
         $pks = explode(',', $request->post('pks')); // Array or selected records primary keys
         foreach ($pks as $pk) {
@@ -219,7 +227,8 @@ class CategorysController extends Controller {
      * @return Categorys the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id) {
+    protected function findModel($id)
+    {
         if (($model = Categorys::findOne($id)) !== null) {
             return $model;
         }
@@ -227,7 +236,8 @@ class CategorysController extends Controller {
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    public function actionHomepage() {
+    public function actionHomepage()
+    {
         if (isset($_POST['id'])) {
             $id = intval($_POST['id']);
             $model = $this->findModel($id);
@@ -241,7 +251,8 @@ class CategorysController extends Controller {
         }
     }
 
-    public function actionStatus() {
+    public function actionStatus()
+    {
         if (isset($_POST['id'])) {
             $id = intval($_POST['id']);
             $model = $this->findModel($id);
@@ -254,5 +265,4 @@ class CategorysController extends Controller {
             }
         }
     }
-
 }
