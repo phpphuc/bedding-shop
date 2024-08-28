@@ -15,14 +15,16 @@ use yii\helpers\Json;
 /**
  * MenuController implements the CRUD actions for Menu model.
  */
-class MenuController extends Controller {
+class MenuController extends Controller
+{
 
-    private $arrModel = ["Home" => "Trang chủ", "Page" => "Bài viết đơn", "AllVideos" => "Danh mục video" , "Postscat" => "Danh mục bài viết", "Posts" => "Bài viết", "Contact" => "Liên hệ", "Thuvien" => "Thư viện"];
+    private $arrModel = ["Home" => "Trang chủ", "Page" => "Bài viết đơn", "AllVideos" => "Danh mục video", "Postscat" => "Danh mục bài viết", "Categorys" => "Danh mục sản phẩm", "Posts" => "Bài viết", "Contact" => "Liên hệ", "Thuvien" => "Thư viện"];
 
     /**
      * {@inheritdoc}
      */
-    public function behaviors() {
+    public function behaviors()
+    {
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
@@ -38,7 +40,8 @@ class MenuController extends Controller {
      * Lists all Menu models.
      * @return mixed
      */
-    public function actionIndex($type) {
+    public function actionIndex($type)
+    {
         $searchModel = new MenuSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $type);
         $dataProvider->pagination = ['pageSize' => 25];
@@ -61,9 +64,9 @@ class MenuController extends Controller {
         }
 
         return $this->render('index', [
-                    'searchModel' => $searchModel,
-                    'dataProvider' => $dataProvider,
-                    'rowvisible' => $rowvisible,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'rowvisible' => $rowvisible,
         ]);
     }
 
@@ -73,9 +76,10 @@ class MenuController extends Controller {
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id) {
+    public function actionView($id)
+    {
         return $this->render('view', [
-                    'model' => $this->findModel($id),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -84,7 +88,8 @@ class MenuController extends Controller {
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate() {
+    public function actionCreate()
+    {
         $model = new Menu();
         $model->type = !empty($_GET['type']) ? $_GET['type'] : 'main';
         $arrList = Menu::find()->where(['type' => $model->type])->asArray()->all();
@@ -103,10 +108,10 @@ class MenuController extends Controller {
         }
 
         return $this->render('create', [
-                    'model' => $model,
-                    'arrList' => $arrList,
-                    'arrModel' => $arrModel,
-                    'data' => $data,
+            'model' => $model,
+            'arrList' => $arrList,
+            'arrModel' => $arrModel,
+            'data' => $data,
         ]);
     }
 
@@ -117,7 +122,8 @@ class MenuController extends Controller {
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id) {
+    public function actionUpdate($id)
+    {
         $model = $this->findModel($id);
         $arrList = Menu::find()->where("id != " . $id . ' and parent != ' . $id . ' and type = "' . $model['type'] . '"')->asArray()->all();
         $arrModel = $this->arrModel;
@@ -136,10 +142,10 @@ class MenuController extends Controller {
         }
 
         return $this->render('update', [
-                    'model' => $model,
-                    'arrList' => $arrList,
-                    'arrModel' => $arrModel,
-                    'data' => $data,
+            'model' => $model,
+            'arrList' => $arrList,
+            'arrModel' => $arrModel,
+            'data' => $data,
         ]);
     }
 
@@ -150,7 +156,8 @@ class MenuController extends Controller {
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id) {
+    public function actionDelete($id)
+    {
         $model = $this->findModel($id);
         $modelCategory = (new Menu())->getCateChild($id);
         if ($modelCategory) {
@@ -160,7 +167,8 @@ class MenuController extends Controller {
         return $this->redirect(['index', 'type' => $model->type]);
     }
 
-    public function actionBulkdelete() {
+    public function actionBulkdelete()
+    {
         $request = Yii::$app->request;
         $pks = explode(',', $request->post('pks')); // Array or selected records primary keys
         foreach ($pks as $pk) {
@@ -193,7 +201,8 @@ class MenuController extends Controller {
      * @return Menu the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id) {
+    protected function findModel($id)
+    {
         if (($model = Menu::findOne($id)) !== null) {
             return $model;
         }
@@ -201,7 +210,8 @@ class MenuController extends Controller {
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    public function actionChangeitem($model) {
+    public function actionChangeitem($model)
+    {
         Yii::$app->response->format = Response::FORMAT_JSON;
         $data = [['id' => '', 'text' => '']];
         switch ($model) {
@@ -269,7 +279,8 @@ class MenuController extends Controller {
         return ['data' => $data];
     }
 
-    public function changeType($postModel, $postModel_id) {
+    public function changeType($postModel, $postModel_id)
+    {
         switch ($postModel) {
             case 'Home':
                 $name_vi = "Trang chủ";
@@ -331,7 +342,8 @@ class MenuController extends Controller {
         return ['name_vi' => $name_vi, 'name_en' => $name_en];
     }
 
-    public function changeData($model) {
+    public function changeData($model)
+    {
         switch ($model) {
             case 'Home':
                 $data = ['0' => "Trang chủ"];
@@ -378,5 +390,4 @@ class MenuController extends Controller {
         }
         return $data;
     }
-
 }
