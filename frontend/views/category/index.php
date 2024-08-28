@@ -8,13 +8,15 @@ $this->title = 'Categories';
 // return;
 ?>
 <h1>
-  <?php //Html::encode($this->title) 
+  <?php //Html::encode($this->title)
   ?></h1>
 
 <section class="bg-white py-8">
   <div class="container text-center">
     <div class="grid gap-y-8 sm:grid-cols-2 xl:grid-cols-4 xl:justify-center xl:gap-8">
-      <?php foreach ($categories as $category):
+      <?php
+      foreach ($categories as $category):
+        $linkSp = Yii::$app->urlManager->createUrl('/san-pham/' . $category['slug']);
       ?>
         <?php //print_r($category);
         // echo PHP_EOL;
@@ -26,7 +28,7 @@ $this->title = 'Categories';
             <img class="img relative z-[-2] h-[258px] w-[258px] rounded-full object-cover" src="<?= $category->image; ?>" alt="" />
             <img class="absolute bottom-0 w-full" src="../images/category-wavy.png" alt="" />
             <div class="absolute bottom-[42px] w-full translate-y-1/2 text-center font-utm-avo font-bold uppercase text-primary">
-              <?= $category->{'name_' . Yii::$app->language}; ?>
+              <a href="<?= $linkSp ?>"><?= $category->{'name_' . Yii::$app->language}; ?></a>
             </div>
           </div>
         </div>
