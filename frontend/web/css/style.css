@@ -1247,10 +1247,6 @@ video {
   }
 } */
 
-html,
-body {
-  overflow-x: hidden;
-}
 
 html {
   font-family: Arial, Helvetica, sans-serif;
