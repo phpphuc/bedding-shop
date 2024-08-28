@@ -1,4 +1,4 @@
-* {margin: 0px auto;padding: 0px;}
+/* * {margin: 0px auto;padding: 0px;} */
 html,body {height: 100%;margin: 0px;padding: 0px;font: 14px 'AvertaStdCY-Regular';line-height: 24px;}
 .row{margin-left: 0!important;margin-right: 0!important;}
 ._width18{position: relative;min-height: 1px;padding-right: 15px;padding-left: 15px;width: 18%;float: left;}
@@ -318,8 +318,8 @@ a.desc:after {content: "\e152";}
 .grid.newdefault{border: 1px solid #DEDEDE;padding: 15px;background: #F7F7F7;margin: 30px 0px;}
 .grid.newdefault .title{font-size: 18px;margin-top: 0px;text-transform:uppercase;margin-bottom: 25px;}
 .grid.newdefault a:hover{color: #ff0000;text-decoration: none;}
-ul.nottype{ padding-left: 0px; }  
-ul.nottype li{ list-style-type: none; margin-bottom: 10px;} 
+ul.nottype{ padding-left: 0px; }
+ul.nottype li{ list-style-type: none; margin-bottom: 10px;}
 ul.nottype a { color: #000; font-size: 16px;}
 ul.nottype li a i{color: #3366ff;}
 ._tagpr i{font-size: 18px; color: #ac2925;vertical-align: middle;}
@@ -379,7 +379,7 @@ img.bounce_ball{position:relative;animation:bounce_ball 3s infinite;-webkit-anim
 @-webkit-keyframes myeff {0% { color: red; } 50% { color: yellow;  } 100% { color: white;  } }
 @-moz-keyframes myeff { 0% { color: red;  } 50% { color: yellow;  }100% { color: white;  } }
 @-o-keyframes myeff { 0% { color: red; } 50% { color: yellow; } 100% { color: white;  } }
-@keyframes myeff { 0% { color: red;  } 50% { color: yellow;  }100% { color: white;  } } 
+@keyframes myeff { 0% { color: red;  } 50% { color: yellow;  }100% { color: white;  } }
 ._texteff {-webkit-animation: myeff 700ms infinite;-moz-animation: myeff 700ms infinite; -o-animation: myeff 700ms infinite; animation: myeff 700ms infinite;}
 
 /* Rotate Effect */
@@ -480,7 +480,7 @@ img.bounce_ball{position:relative;animation:bounce_ball 3s infinite;-webkit-anim
     text-align: center;
     width: 100%;
     top: 7px;
-    text-transform: uppercase; 
+    text-transform: uppercase;
 }
 .color-brand {
     color: #31278c;
@@ -558,7 +558,7 @@ h3, .h3 {
     text-decoration: none;
 }
 .item img{
-    width:100% !important;  
+    width:100% !important;
     height:480px !important;
 }
 .hinhgt a img{
@@ -614,7 +614,7 @@ h3, .h3 {
     width: 65px;
 }
 ._hotline-fix a img{
-   width: 65px; 
+   width: 65px;
 }
 .carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev{
     margin-left: -70px;
