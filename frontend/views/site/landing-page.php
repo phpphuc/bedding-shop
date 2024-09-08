@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thành lập công ty</title>
-  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <!-- <link rel="stylesheet" href="style.css" /> -->
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" /> -->
   <link rel="stylesheet" href="frontend/web/css/landing-page.css">
@@ -881,3 +881,170 @@
   </script>
 </body
   </html>
+
+<?php if (Yii::$app->session->hasFlash('error') || Yii::$app->session->hasFlash('success')): ?>
+  <?php
+  $flashType = Yii::$app->session->hasFlash('error') ? 'error' : 'success';
+  $flashMessages = Yii::$app->session->getFlash($flashType);
+  $modalTitle = $flashType === 'error' ? 'Đăng ký thất bại' : 'Đăng ký thành công';
+  $modalIconColor = $flashType === 'error' ? 'text-red-600' : 'text-green-600';
+  $modalBgColor = $flashType === 'error' ? 'bg-red-100' : 'bg-green-100';
+  ?>
+  <div id="modal-alert" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+
+    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+      <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+        <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+          <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+            <div class="sm:flex sm:items-start">
+              <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full <?= $modalBgColor ?> sm:mx-0 sm:h-10 sm:w-10">
+                <svg class="h-6 w-6 <?= $modalIconColor ?>" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                </svg>
+              </div>
+              <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                <h3 class="text-lg font-semibold leading-6 text-gray-900" id="modal-title"><?= $modalTitle ?></h3>
+                <div class="mt-2">
+                  <?php foreach ($flashMessages as $message): ?>
+                    <p class="text-base text-gray-500"><?= implode(" ", $message) ?></p>
+                  <?php endforeach; ?>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+            <button id="close-modal" type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">x</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<?php endif; ?>
+
+<?php if (Yii::$app->session->hasFlash('success1')): ?>
+  <div class="alert alert-success">
+    <?php foreach (Yii::$app->session->getFlash('success') as $message): ?>
+      <strong><?= $message[0] ?>:</strong> <?= $message[1] ?>
+    <?php endforeach; ?>
+  </div>
+<?php endif; ?>
+
+<?php
+
+if (Yii::$app->session->hasFlash('error1')): ?>
+  <div class="alert alert-danger">
+    <?php foreach (Yii::$app->session->getFlash('error') as $message): ?>
+      <strong><?= $message[0] ?></strong>
+    <?php endforeach; ?>
+  </div>
+<?php endif; ?>
+<div class="modal fade" id="pa3py6aka-modal-alert" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header alert-danger">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title" id="myModalLabel">Thông báo</h4>
+      </div>
+      <div class="modal-body">
+        <p>Đã xảy ra lỗi khi đăng ký. Vui lòng thử lại.</p>
+        <p>Chúng tôi đã nhận được Email của bạn. Cảm ơn đã đăng ký!</p>
+      </div>
+      <!--<div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>-->
+    </div>
+  </div>
+</div>
+
+<?php
+if (Yii::$app->getResponse()->getStatusCode() != 302) {
+  Yii::$app->session->getFlash('error');
+} ?>
+<script>
+  document.getElementById('close-modal').addEventListener('click', function() {
+    document.getElementById('modal-alert').style.display = 'none';
+  });
+</script>
+<style>
+  .alert-danger {
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+  }
+
+  .alert {
+    position: float;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    outline: 0;
+  }
+
+  .modal.fade .modal-dialog {
+    transition: transform .3s ease-out;
+    transform: translate(0, -25%);
+  }
+
+  .modal.in .modal-dialog {
+    transform: translate(0, 0);
+  }
+
+  .modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 10px;
+  }
+
+  .modal-content {
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #999;
+    border-radius: 6px;
+    outline: 0;
+    box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+  }
+
+  .modal-header {
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .modal-header .close {
+    margin-top: -2px;
+  }
+
+  .modal-title {
+    margin: 0;
+    line-height: 1.42857143;
+  }
+
+  .modal-body {
+    position: relative;
+    padding: 15px;
+  }
+
+  .modal-footer {
+    padding: 15px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+  }
+
+  .modal-footer .btn+.btn {
+    margin-left: 5px;
+    margin-bottom: 0;
+  }
+</style>
