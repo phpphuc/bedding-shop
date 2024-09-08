@@ -254,7 +254,7 @@
                 </span>
             </a>
             <ul class="treeview-menu">
-                <li><a href="</?php echo Yii::$app->homeUrl; ?>/newsletter/default/list"><i class="far fa-circle"></i> Danh sách đăng ký</a></li>
+                <li><a href="<?php echo Yii::$app->homeUrl; ?>/newsletter/default/list"><i class="far fa-circle"></i> Danh sách đăng ký</a></li>
             </ul>
         </li>
     </ul>

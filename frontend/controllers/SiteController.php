@@ -3,29 +3,30 @@
 namespace frontend\controllers;
 
 use Yii;
-use yii\base\InvalidParamException;
-use yii\web\BadRequestHttpException;
-use frontend\components\MyController;
+use backend\models\Page;
+use backend\models\Bacsi;
+use backend\models\Baogia;
+use backend\models\Camket;
+use backend\models\Videos;
+use backend\models\Camnhan;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
+use backend\models\AuthItem;
+use backend\models\Chinhanh;
+use backend\models\Postscat;
 use common\models\LoginForm;
-use frontend\models\PasswordResetRequestForm;
-use frontend\models\ResetPasswordForm;
+use backend\models\Categorys;
+use backend\models\Khachhang;
+use yii\filters\AccessControl;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
-use backend\models\AuthItem;
-use frontend\components\OpenGraph;
 use frontend\components\MetaTags;
-use backend\models\Page;
-use backend\models\Categorys;
-use backend\models\Postscat;
-use backend\models\Camket;
-use backend\models\Camnhan;
-use backend\models\Videos;
-use backend\models\Baogia;
-use backend\models\Bacsi;
-use backend\models\Chinhanh;
-use backend\models\Khachhang;
+use frontend\components\OpenGraph;
+use yii\base\InvalidParamException;
+use yii\web\BadRequestHttpException;
+use frontend\assets\LandingPageAsset;
+use frontend\components\MyController;
+use frontend\models\ResetPasswordForm;
+use frontend\models\PasswordResetRequestForm;
 
 /**
  * Site controller
@@ -78,7 +79,7 @@ class SiteController extends MyController
                 // optionally, set mode and obfuscation properties e.g.:
                 'mode' => 'words', //default|math|mathverbal|logical|words
                 //'mode' => CaptchaExtendedAction::MODE_MATH,
-                //'resultMultiplier' => 5,
+                //'resultMultiplier' => 5
                 //'lines' => 5,
                 //'density' => 10,
                 //'height' => 50,
@@ -97,6 +98,14 @@ class SiteController extends MyController
             ]);
             Yii::$app->getResponse()->getCookies()->add($cookie);
         }
+    }
+
+    public function actionLandingPage()
+    {
+        $this->layout = false;
+        // Register the LandingPageAsset
+        // LandingPageAsset::register($this->view);
+        return $this->render('landing-page');
     }
 
     /**

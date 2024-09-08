@@ -242,6 +242,7 @@ return [
                 'thu-vien/<slug>' => 'thuvien/view',
                 'gio-hang' => 'cart/index',
                 'changelanguage' => 'site/language',
+                'landing-page' => 'site/landing-page'
             ],
         ],
     ],
