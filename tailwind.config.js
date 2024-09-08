@@ -18,6 +18,12 @@ module.exports = {
   // content: ["E:/2024/365/miglobalv/frontend/views/site/index.php"],
   // content: ["./frontend/*.php"],
   theme: {
+    //     fontSize: {
+    //   sm: ['10px', '20px'],
+    //   base: ['10px', '24px'],
+    //   lg: ['20px', '28px'],
+    //   xl: ['24px', '32px'],
+    // },
     container: {
       center: true,
     },

@@ -17,8 +17,9 @@ $this->title = $model['title'];
         <div class="col-md-12">
             <div><?= $model['content_' . Yii::$app->language]; ?></div>
             <div class="clearfix margin-bottom-10"></div>
-      
-<!--            <div class="fb-comments" data-href="<?//= \yii\helpers\Url::to('bai-viet/' . $model['slug'] . '.html', true); ?>" data-width="" data-numposts="5"></div>-->
+
+            <!--            <div class="fb-comments" data-href="<? //= \yii\helpers\Url::to('bai-viet/' . $model['slug'] . '.html', true); 
+                                                                ?>" data-width="" data-numposts="5"></div>-->
         </div>
     </div>
 </div>

@@ -36,7 +36,9 @@ AppAsset::register($this);
 
 </head>
 
-<body id="target-loading">
+<body id="target-loading"
+    class="w-[1366px] mx-auto">
+    <!-- class="md:w-[1366px] margin-auto"> -->
     <?php $this->beginBody() ?>
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v4.0&appId=1879502379031804&autoLogAppEvents=1"></script>

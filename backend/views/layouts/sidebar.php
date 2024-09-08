@@ -246,16 +246,16 @@
                         <li><a href="</?php echo Yii::$app->homeUrl; ?>/rbac/assignment"><i class="far fa-circle"></i> Gán quyền</a></li>
                     </ul>
                 </li>-->
-        <!--        <li class="treeview">
-                    <a href="#">
-                        <i class="fas fa-envelope-open-text"></i> <span>Đăng ký nhận tin</span>
-                        <span class="pull-right-container">
-                            <i class="fas fa-angle-left"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="</?php echo Yii::$app->homeUrl; ?>/newsletter/default/list"><i class="far fa-circle"></i> Danh sách đăng ký</a></li>
-                    </ul>
-                </li>-->
+        <li class="treeview">
+            <a href="#">
+                <i class="fas fa-envelope-open-text"></i> <span>Đăng ký nhận tin</span>
+                <span class="pull-right-container">
+                    <i class="fas fa-angle-left"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="</?php echo Yii::$app->homeUrl; ?>/newsletter/default/list"><i class="far fa-circle"></i> Danh sách đăng ký</a></li>
+            </ul>
+        </li>
     </ul>
 </section>

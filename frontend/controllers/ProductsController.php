@@ -11,36 +11,41 @@ use frontend\components\OpenGraph;
 use frontend\components\MetaTags;
 use yii\web\NotFoundHttpException;
 
-class ProductsController extends MyController {
+class ProductsController extends MyController
+{
 
     public $defaultPageSize = 12;
 
-    public function actionIndex() {
+    public function actionIndex()
+    {
+        $categories = Categorys::find()->where(['status' => 1])->all();
+        // print_r($categories);
+        return $this->render('index', ['categories' => $categories]);
         MetaTags::generate(
-                [
-                    'keywords' => $this->website['keyword'],
-                    'description' => $this->website['description'],
-                    'twitter:card' => 'summary',
-                ]
+            [
+                'keywords' => $this->website['keyword'],
+                'description' => $this->website['description'],
+                'twitter:card' => 'summary',
+            ]
         );
         OpenGraph::generate(
-                [
-                    'og:site_name' => $this->website['name_' . \Yii::$app->language],
-                    'og:title' => $this->website['title'],
-                    'og:description' => $this->website['description'],
-                    'og:type' => 'website',
-                    'og:image' => \Yii::$app->request->hostInfo . $this->website['logo'],
-                    'og:url' => \Yii::$app->request->hostInfo . \Yii::$app->urlManager->createUrl('/san-pham'),
-                ]
+            [
+                'og:site_name' => $this->website['name_' . \Yii::$app->language],
+                'og:title' => $this->website['title'],
+                'og:description' => $this->website['description'],
+                'og:type' => 'website',
+                'og:image' => \Yii::$app->request->hostInfo . $this->website['logo'],
+                'og:url' => \Yii::$app->request->hostInfo . \Yii::$app->urlManager->createUrl('/san-pham'),
+            ]
         );
 
         $query = Products::find()->where(['status' => 1]);
         $countQuery = clone $query;
         $pages = new Pagination(['totalCount' => $countQuery->count(), 'defaultPageSize' => $this->defaultPageSize]);
         $models = $query->offset($pages->offset)
-                ->limit($pages->limit)
-                ->orderBy('number asc, id desc')
-                ->all();
+            ->limit($pages->limit)
+            ->orderBy('number asc, id desc')
+            ->all();
         if ($this->isMobile) {
             return $this->render('index_m', ['models' => $models, 'pages' => $pages]);
         } else {
@@ -48,25 +53,39 @@ class ProductsController extends MyController {
         }
     }
 
-    public function actionCate($slug) {
+    public function actionIndex2()
+    {
+
+        $query = Products::find()->where(['status' => 1]);
+        $countQuery = clone $query;
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'defaultPageSize' => $this->defaultPageSize]);
+        $models = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->orderBy('number asc, id desc')
+            ->all();
+        return $this->render('index1', ['categories' => $models, 'pages' => $pages]);
+    }
+
+    public function actionCate($slug)
+    {
 
         $model = $this->findModel($slug);
 
         MetaTags::generate(
-                [
-                    'keywords' => $model['keyword'],
-                    'description' => $model['description'],
-                    'twitter:card' => 'summary',
-                ]
+            [
+                'keywords' => $model['keyword'],
+                'description' => $model['description'],
+                'twitter:card' => 'summary',
+            ]
         );
         OpenGraph::generate(
-                [
-                    'og:title' => $model['title'],
-                    'og:description' => $model['description'],
-                    'og:type' => 'website',
-                    'og:image' => !empty($model['image']) ? \Yii::$app->request->hostInfo . $model['image'] : \Yii::$app->request->hostInfo . $this->website['logo'],
-                    'og:url' => \Yii::$app->request->hostInfo . \Yii::$app->urlManager->createUrl('/san-pham/' . $model['slug']),
-                ]
+            [
+                'og:title' => $model['title'],
+                'og:description' => $model['description'],
+                'og:type' => 'website',
+                'og:image' => !empty($model['image']) ? \Yii::$app->request->hostInfo . $model['image'] : \Yii::$app->request->hostInfo . $this->website['logo'],
+                'og:url' => \Yii::$app->request->hostInfo . \Yii::$app->urlManager->createUrl('/san-pham/' . $model['slug']),
+            ]
         );
 
         $cate = new Categorys();
@@ -79,9 +98,9 @@ class ProductsController extends MyController {
         $countQuery = clone $query;
         $pages = new Pagination(['totalCount' => $countQuery->count(), 'defaultPageSize' => $this->defaultPageSize]);
         $models = $query->offset($pages->offset)
-                ->limit($pages->limit)
-                ->orderBy('number asc, id desc')
-                ->all();
+            ->limit($pages->limit)
+            ->orderBy('number asc, id desc')
+            ->all();
         if ($this->isMobile) {
             return $this->render('cate_m', ['models' => $models, 'model' => $model, 'pages' => $pages]);
         } else {
@@ -89,32 +108,33 @@ class ProductsController extends MyController {
         }
     }
 
-    public function actionSale() {
+    public function actionSale()
+    {
         MetaTags::generate(
-                [
-                    'keywords' => $this->website['keyword'],
-                    'description' => $this->website['description'],
-                    'twitter:card' => 'summary',
-                ]
+            [
+                'keywords' => $this->website['keyword'],
+                'description' => $this->website['description'],
+                'twitter:card' => 'summary',
+            ]
         );
         OpenGraph::generate(
-                [
-                    'og:site_name' => $this->website['name_' . \Yii::$app->language],
-                    'og:title' => $this->website['title'],
-                    'og:description' => $this->website['description'],
-                    'og:type' => 'website',
-                    'og:image' => \Yii::$app->request->hostInfo . $this->website['logo'],
-                    'og:url' => \Yii::$app->request->hostInfo . \Yii::$app->urlManager->createUrl('/san-pham-sale'),
-                ]
+            [
+                'og:site_name' => $this->website['name_' . \Yii::$app->language],
+                'og:title' => $this->website['title'],
+                'og:description' => $this->website['description'],
+                'og:type' => 'website',
+                'og:image' => \Yii::$app->request->hostInfo . $this->website['logo'],
+                'og:url' => \Yii::$app->request->hostInfo . \Yii::$app->urlManager->createUrl('/san-pham-sale'),
+            ]
         );
 
         $query = Products::find()->where(['status' => 1, 'promotion' => 1]);
         $countQuery = clone $query;
         $pages = new Pagination(['totalCount' => $countQuery->count(), 'defaultPageSize' => $this->defaultPageSize]);
         $models = $query->offset($pages->offset)
-                ->limit($pages->limit)
-                ->orderBy('number asc, id desc')
-                ->all();
+            ->limit($pages->limit)
+            ->orderBy('number asc, id desc')
+            ->all();
         if ($this->isMobile) {
             return $this->render('sale_m', ['models' => $models, 'pages' => $pages]);
         } else {
@@ -122,10 +142,11 @@ class ProductsController extends MyController {
         }
     }
 
-    public function actionView($slug) {
+    public function actionView($slug)
+    {
         \Yii::$app->db->createCommand()
-                ->update(Products::tableName(), ['views' => new \yii\db\Expression('views+1')], ['slug' => $slug])
-                ->execute();
+            ->update(Products::tableName(), ['views' => new \yii\db\Expression('views+1')], ['slug' => $slug])
+            ->execute();
         $models = $this->findProduct($slug);
         $model = Categorys::findOne($models['parent']);
         $productsSame = Products::find()->where('status = 1 and id != ' . $models['id'] . ' and parent = ' . $models['parent'])->asArray()->orderBy('number asc, id desc')->all();
@@ -133,20 +154,20 @@ class ProductsController extends MyController {
         $options = ProductsOp::findAll(['parent' => $models['id']]);
 
         MetaTags::generate(
-                [
-                    'keywords' => $models['keyword'],
-                    'description' => $models['description'],
-                    'twitter:card' => 'summary',
-                ]
+            [
+                'keywords' => $models['keyword'],
+                'description' => $models['description'],
+                'twitter:card' => 'summary',
+            ]
         );
         OpenGraph::generate(
-                [
-                    'og:title' => $models['title'],
-                    'og:description' => $models['description'],
-                    'og:type' => 'website',
-                    'og:image' => !empty($models['image']) ? \Yii::$app->request->hostInfo . $models['image'] : \Yii::$app->request->hostInfo . $this->website['logo'],
-                    'og:url' => \Yii::$app->request->hostInfo . \Yii::$app->urlManager->createUrl('/chi-tiet-san-pham/' . $models['slug']),
-                ]
+            [
+                'og:title' => $models['title'],
+                'og:description' => $models['description'],
+                'og:type' => 'website',
+                'og:image' => !empty($models['image']) ? \Yii::$app->request->hostInfo . $models['image'] : \Yii::$app->request->hostInfo . $this->website['logo'],
+                'og:url' => \Yii::$app->request->hostInfo . \Yii::$app->urlManager->createUrl('/chi-tiet-san-pham/' . $models['slug']),
+            ]
         );
 
         if ($this->isMobile) {
@@ -156,24 +177,25 @@ class ProductsController extends MyController {
         }
     }
 
-    public function actionTag($tag) {
+    public function actionTag($tag)
+    {
 
         MetaTags::generate(
-                [
-                    'keywords' => $this->website['keyword'],
-                    'description' => $this->website['description'],
-                    'twitter:card' => 'summary',
-                ]
+            [
+                'keywords' => $this->website['keyword'],
+                'description' => $this->website['description'],
+                'twitter:card' => 'summary',
+            ]
         );
         OpenGraph::generate(
-                [
-                    'og:site_name' => $this->website['name_' . \Yii::$app->language],
-                    'og:title' => $this->website['title'],
-                    'og:description' => $this->website['description'],
-                    'og:type' => 'website',
-                    'og:image' => \Yii::$app->request->hostInfo . $this->website['logo'],
-                    'og:url' => \Yii::$app->request->hostInfo,
-                ]
+            [
+                'og:site_name' => $this->website['name_' . \Yii::$app->language],
+                'og:title' => $this->website['title'],
+                'og:description' => $this->website['description'],
+                'og:type' => 'website',
+                'og:image' => \Yii::$app->request->hostInfo . $this->website['logo'],
+                'og:url' => \Yii::$app->request->hostInfo,
+            ]
         );
 
         $query = Products::find()->where(['status' => 1]);
@@ -181,9 +203,9 @@ class ProductsController extends MyController {
         $countQuery = clone $query;
         $pages = new Pagination(['totalCount' => $countQuery->count(), 'defaultPageSize' => $this->defaultPageSize]);
         $models = $query->offset($pages->offset)
-                ->limit($pages->limit)
-                ->orderBy('number asc, id desc')
-                ->all();
+            ->limit($pages->limit)
+            ->orderBy('number asc, id desc')
+            ->all();
         if ($this->isMobile) {
             return $this->render('tag_m', ['models' => $models, 'pages' => $pages]);
         } else {
@@ -191,24 +213,25 @@ class ProductsController extends MyController {
         }
     }
 
-    public function actionSearch() {
+    public function actionSearch()
+    {
 
         MetaTags::generate(
-                [
-                    'keywords' => $this->website['keyword'],
-                    'description' => $this->website['description'],
-                    'twitter:card' => 'summary',
-                ]
+            [
+                'keywords' => $this->website['keyword'],
+                'description' => $this->website['description'],
+                'twitter:card' => 'summary',
+            ]
         );
         OpenGraph::generate(
-                [
-                    'og:site_name' => $this->website['name_' . \Yii::$app->language],
-                    'og:title' => $this->website['title'],
-                    'og:description' => $this->website['description'],
-                    'og:type' => 'website',
-                    'og:image' => \Yii::$app->request->hostInfo . $this->website['logo'],
-                    'og:url' => \Yii::$app->request->hostInfo,
-                ]
+            [
+                'og:site_name' => $this->website['name_' . \Yii::$app->language],
+                'og:title' => $this->website['title'],
+                'og:description' => $this->website['description'],
+                'og:type' => 'website',
+                'og:image' => \Yii::$app->request->hostInfo . $this->website['logo'],
+                'og:url' => \Yii::$app->request->hostInfo,
+            ]
         );
 
         $query = Products::find()->where(['status' => 1]);
@@ -218,9 +241,9 @@ class ProductsController extends MyController {
         $countQuery = clone $query;
         $pages = new Pagination(['totalCount' => $countQuery->count(), 'defaultPageSize' => $this->defaultPageSize]);
         $models = $query->offset($pages->offset)
-                ->limit($pages->limit)
-                ->orderBy('number asc, id desc')
-                ->all();
+            ->limit($pages->limit)
+            ->orderBy('number asc, id desc')
+            ->all();
         if ($this->isMobile) {
             return $this->render('search_m', ['models' => $models, 'pages' => $pages]);
         } else {
@@ -228,7 +251,8 @@ class ProductsController extends MyController {
         }
     }
 
-    public function actionRating() {
+    public function actionRating()
+    {
         if (!empty($_POST['id']) && !empty($_POST['value'])) {
             $model = Products::findOne($_POST['id']);
             $model->ratecount += $_POST['value'];
@@ -240,13 +264,14 @@ class ProductsController extends MyController {
         }
     }
 
-    public function actionLoadmore() {
+    public function actionLoadmore()
+    {
         $page = intval($_POST['page']);
         $query = Products::find()->where(['status' => 1, 'feature' => 1]);
         $models = $query->offset($page * 4)
-                ->limit(4)
-                ->orderBy('number asc, id desc')
-                ->all();
+            ->limit(4)
+            ->orderBy('number asc, id desc')
+            ->all();
         if ($this->isMobile) {
             return $this->renderPartial('loadmore', ['models' => $models]);
         } else {
@@ -254,7 +279,8 @@ class ProductsController extends MyController {
         }
     }
 
-    protected function findModel($slug) {
+    protected function findModel($slug)
+    {
         if (($model = Categorys::findOne(['slug' => $slug])) !== null) {
             return $model;
         }
@@ -262,12 +288,12 @@ class ProductsController extends MyController {
         throw new NotFoundHttpException(\Yii::t('app', 'The requested page does not exist.'));
     }
 
-    protected function findProduct($slug) {
+    protected function findProduct($slug)
+    {
         if (($model = Products::findOne(['slug' => $slug])) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException(\Yii::t('app', 'The requested page does not exist.'));
     }
-
 }

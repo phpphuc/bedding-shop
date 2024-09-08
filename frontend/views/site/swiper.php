@@ -12,10 +12,10 @@ $this->registerJs(<<<JS
             delay: 2500,
             disableOnInteraction: false,
         },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
+        // pagination: {
+        //     el: '.swiper-pagination',
+        //     clickable: true,
+        // },
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
@@ -34,7 +34,7 @@ $slides = Slideshow::find()->where(['parent' => 1, 'homepage' => 1])->orderBy('n
 
       ?>
         <div class="swiper-slide">
-          <img src="<?= $slide['image'] ?>" alt="Slide 1" class="mx-auto">
+          <img style="height: 650px; object-fit: none;" src="<?= $slide['image'] ?>" alt="Slide 1" class="mx-auto w-full h-[650px] object-none">
         </div>
 
       <?php //break;

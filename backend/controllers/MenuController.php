@@ -18,7 +18,7 @@ use yii\helpers\Json;
 class MenuController extends Controller
 {
 
-    private $arrModel = ["Home" => "Trang chủ", "Page" => "Bài viết đơn", "AllVideos" => "Danh mục video", "Postscat" => "Danh mục bài viết", "Categorys" => "Danh mục sản phẩm", "Posts" => "Bài viết", "Contact" => "Liên hệ", "Thuvien" => "Thư viện"];
+    private $arrModel = ["Home" => "Trang chủ", "Page" => "Bài viết đơn", "AllVideos" => "Danh mục video", "Postscat" => "Danh mục bài viết", "AllProducts" => "Menu sản phẩm",  "Categorys" => "Danh mục sản phẩm", "Posts" => "Bài viết", "Contact" => "Liên hệ", "Thuvien" => "Thư viện"];
 
     /**
      * {@inheritdoc}
@@ -88,6 +88,14 @@ class MenuController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
+    public function actionCreate1()
+    {
+        $model = new Menu();
+        $model->type  = !empty($_GET['type']) ? $_GET['type'] : 'main';
+
+        $arrModel = $this->arrModel;
+    }
+
     public function actionCreate()
     {
         $model = new Menu();

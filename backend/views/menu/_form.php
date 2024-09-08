@@ -55,7 +55,8 @@ $select2Options = [
             ?>
         </div>
     </div>
-    <?php ob_start(); // output buffer the javascript to register later ?>
+    <?php ob_start(); // output buffer the javascript to register later 
+    ?>
     <script>
         function changeItem(model) {
             var url = '<?= Url::to(['menu/changeitem', 'model' => '-model-']) ?>';
@@ -63,7 +64,7 @@ $select2Options = [
             $select.find('option').remove().end();
             $.ajax({
                 url: url.replace('-model-', model),
-                success: function (data) {
+                success: function(data) {
                     var select2Options = <?= Json::encode($select2Options) ?>;
                     select2Options.data = data.data;
                     $select.select2(select2Options);

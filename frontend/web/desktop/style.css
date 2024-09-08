@@ -226,9 +226,12 @@ a.desc:after {content: "\e152";}
 .mybreadcrumb__step:last-child::after {content: none;}
 .mybreadcrumb__step::before {content: counter(flag);counter-increment: flag;border-radius: 100%;width: 20px;height: 20px;line-height: 20px;margin: 8px 0;position: absolute;top: 0;left: 30px;font-weight: bold;background: #fff;box-shadow: 0 0 0 1px #fc372f;}
 .mybreadcrumb__step::after {content: '';position: absolute;top: 0;right: -18px;width: 36px;height: 36px;transform: scale(0.707) rotate(45deg);z-index: 1;border-radius: 0 5px 0 50px;background: #fff;transition: background 0.5s;box-shadow: 2px -2px 0 2px #1273f7;}
-.mybreadcrumb__step--active {color: #fff;background: #001397;}
-.mybreadcrumb__step--active::before {color: #001397;}
-.mybreadcrumb__step--active::after {background: #001397;}
+/* .mybreadcrumb__step--active {color: #fff;background: #001397;} */
+.mybreadcrumb__step--active {color: #fff;background: #f44880e6;}
+/* .mybreadcrumb__step--active::before {color: #001397;} */
+.mybreadcrumb__step--active::before {color: #f44880e6;}
+/* .mybreadcrumb__step--active::after {background: #001397;} */
+.mybreadcrumb__step--active::after {background: #f44880e6;}
 .mybreadcrumb__step:hover {color: #fff;background: #fc372f;}
 .mybreadcrumb__step:hover::before {color: #001397;}
 .mybreadcrumb__step:hover::after {color: #001397;background: #fc372f;}

@@ -1124,6 +1124,10 @@ video {
   opacity: 0.8;
 }
 
+.opacity-50 {
+  opacity: 0.5;
+}
+
 .outline {
   outline-style: solid;
 }
@@ -1247,6 +1251,11 @@ video {
   }
 } */
 
+html,
+body {
+  /* overflow-x: hidden; */
+  /* font-size:12px; */
+}
 
 html {
   font-family: Arial, Helvetica, sans-serif;
@@ -1282,6 +1291,7 @@ header:after {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+  font-size: 15px !important;
 }
 
 .nav__item:hover {
@@ -1436,6 +1446,14 @@ a:hover {
 
   .md\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .md\:justify-center {
+    justify-content: center;
+  }
+
+  .md\:gap-8 {
+    gap: 2rem;
   }
 }
 

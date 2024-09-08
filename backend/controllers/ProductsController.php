@@ -8,6 +8,7 @@ use Yii;
 use yii\filters\VerbFilter;
 use yii\helpers\Json;
 use yii\web\Controller;
+use yii\base\Exception;
 use yii\web\NotFoundHttpException;
 use backend\models\ProductsOp;
 use yii\helpers\ArrayHelper;
@@ -17,12 +18,14 @@ use yii\web\Response;
 /**
  * ProductsController implements the CRUD actions for Products model.
  */
-class ProductsController extends Controller {
+class ProductsController extends Controller
+{
 
     /**
      * {@inheritdoc}
      */
-    public function behaviors() {
+    public function behaviors()
+    {
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
@@ -38,7 +41,8 @@ class ProductsController extends Controller {
      * Lists all Products models.
      * @return mixed
      */
-    public function actionIndex() {
+    public function actionIndex()
+    {
         $searchModel = new ProductsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->pagination = ['pageSize' => 10,];
@@ -63,8 +67,8 @@ class ProductsController extends Controller {
         }
 
         return $this->render('index', [
-                    'searchModel' => $searchModel,
-                    'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -74,9 +78,10 @@ class ProductsController extends Controller {
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id) {
+    public function actionView($id)
+    {
         return $this->render('view', [
-                    'model' => $this->findModel($id),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -85,7 +90,8 @@ class ProductsController extends Controller {
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate() {
+    public function actionCreate()
+    {
         $model = new Products();
         $modelsProductsOp = [new ProductsOp];
 
@@ -125,8 +131,8 @@ class ProductsController extends Controller {
         }
 
         return $this->render('create', [
-                    'model' => $model,
-                    'modelsProductsOp' => (empty($modelsProductsOp)) ? [new ProductsOp] : $modelsProductsOp,
+            'model' => $model,
+            'modelsProductsOp' => (empty($modelsProductsOp)) ? [new ProductsOp] : $modelsProductsOp,
         ]);
     }
 
@@ -137,7 +143,8 @@ class ProductsController extends Controller {
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id) {
+    public function actionUpdate($id)
+    {
         $model = $this->findModel($id);
         $modelsProductsOp = $this->getProductOp($id);
 
@@ -180,8 +187,8 @@ class ProductsController extends Controller {
         }
 
         return $this->render('update', [
-                    'model' => $model,
-                    'modelsProductsOp' => (empty($modelsProductsOp)) ? [new ProductsOp] : $modelsProductsOp,
+            'model' => $model,
+            'modelsProductsOp' => (empty($modelsProductsOp)) ? [new ProductsOp] : $modelsProductsOp,
         ]);
     }
 
@@ -192,7 +199,8 @@ class ProductsController extends Controller {
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id) {
+    public function actionDelete($id)
+    {
         $model = $this->findModel($id);
         ProductsOp::deleteAll(['parent' => $model->id]);
         $model->delete();
@@ -200,7 +208,8 @@ class ProductsController extends Controller {
         return $this->redirect(['index']);
     }
 
-    public function actionBulkdelete() {
+    public function actionBulkdelete()
+    {
         $request = Yii::$app->request;
         $pks = explode(',', $request->post('pks')); // Array or selected records primary keys
         foreach ($pks as $pk) {
@@ -230,7 +239,8 @@ class ProductsController extends Controller {
      * @return Products the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id) {
+    protected function findModel($id)
+    {
         if (($model = Products::findOne($id)) !== null) {
             return $model;
         }
@@ -238,7 +248,8 @@ class ProductsController extends Controller {
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    public function actionFeature() {
+    public function actionFeature()
+    {
         if (isset($_POST['id'])) {
             $id = intval($_POST['id']);
             $model = $this->findModel($id);
@@ -252,7 +263,8 @@ class ProductsController extends Controller {
         }
     }
 
-    public function actionNew() {
+    public function actionNew()
+    {
         if (isset($_POST['id'])) {
             $id = intval($_POST['id']);
             $model = $this->findModel($id);
@@ -266,7 +278,8 @@ class ProductsController extends Controller {
         }
     }
 
-    public function actionBestseller() {
+    public function actionBestseller()
+    {
         if (isset($_POST['id'])) {
             $id = intval($_POST['id']);
             $model = $this->findModel($id);
@@ -280,7 +293,8 @@ class ProductsController extends Controller {
         }
     }
 
-    public function actionPromotion() {
+    public function actionPromotion()
+    {
         if (isset($_POST['id'])) {
             $id = intval($_POST['id']);
             $model = $this->findModel($id);
@@ -294,7 +308,8 @@ class ProductsController extends Controller {
         }
     }
 
-    public function actionStatus() {
+    public function actionStatus()
+    {
         if (isset($_POST['id'])) {
             $id = intval($_POST['id']);
             $model = $this->findModel($id);
@@ -308,9 +323,9 @@ class ProductsController extends Controller {
         }
     }
 
-    public function getProductOp($id) {
+    public function getProductOp($id)
+    {
         $model = ProductsOp::find()->where(['parent' => $id])->all();
         return $model;
     }
-
 }

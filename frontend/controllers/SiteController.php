@@ -138,8 +138,8 @@ class SiteController extends MyController
         $visaos = Camket::find()->orderBy('number asc, id desc')->all();
         $camnhan = Camnhan::find()->orderBy('number asc, id desc')->all();
         $video = Videos::find()->where(['status' => 1])->orderBy('number asc, id desc')->one();
+        $categories = Categorys::find()->where(['status' => 1, 'homepage' => 1])->all();
 
-        $categories = Categorys::find()->where(['status' => 1])->all();
         if ($this->isMobile) {
             return $this->render('index_m', ['dichvus' => $dichvus, 'camnang' => $camnang, 'visaos' => $visaos, 'camnhan' => $camnhan, 'pageOne' => $pageOne, 'bacsi' => $bacsi, 'chinhanh' => $chinhanh, 'video' => $video, 'tintucs' => $tintucs, 'duannoibat' => $duannoibat]);
         } else {

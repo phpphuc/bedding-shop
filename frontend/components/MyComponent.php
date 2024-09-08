@@ -16,7 +16,7 @@ class MyComponent extends Component
     {
         $this->website = \backend\models\Config::findOne(1);
         $this->config = \yii\helpers\ArrayHelper::map(\backend\models\Configs::find()->all(), 'key', 'value');
-        echo 'MyComponent init';
+        // echo 'MyComponent init';
 
         parent::init();
     }
@@ -117,12 +117,11 @@ class MyComponent extends Component
     {
         $menu = \backend\models\Menu::find()->where(['type' => $type, 'parent' => $parent])->orderBy('number asc, id desc')->all();
         foreach ($menu as $key => $value) {
-            // print_r($value);
             $id = $value['id'];
             $name = $value['name_' . Yii::$app->language];
             $link = $this->getLink($value['model'], $value['model_id']);
             $subMenu = \backend\models\Menu::find()->where(['type' => $type, 'parent' => $id])->orderBy('number asc, id desc')->all();
-            /*if ($subMenu) {
+            if ($subMenu) {
 ?>
                 <li aria-haspopup="true">
                     <a href="<?= $link; ?>" title="<?= $name; ?>">
@@ -135,16 +134,52 @@ class MyComponent extends Component
                     </div>
                 </li>
             <?php
-            } else {*/
-?>
-            <!-- <li class="nav__item"> -->
-            <a class="nav__item <?= ($value['model'] == "Home") ? '_active-home' : ''; ?>" href="<?= $link; ?>" title="<?= ($value['model'] == "Home") ? 'Trang chủ' : $name; ?>">
-                <!-- z-10 relative  -->
-                <?= $name; ?>
-            </a>
-            <!-- </li> -->
+            } else {
+            ?>
+                <li>
+                    <a class="<?= ($value['model'] == "Home") ? '_active-home' : ''; ?>" href="<?= $link; ?>" title="<?= ($value['model'] == "Home") ? 'Trang chủ' : $name; ?>">
+                        <?= $name; ?>
+                    </a>
+                </li>
             <?php
-            // }
+            }
+        }
+    }
+    public function menuGenerator1($type, $parent)
+    {
+        $menu = \backend\models\Menu::find()->where(['type' => $type, 'parent' => $parent])->orderBy('number asc, id desc')->all();
+        foreach ($menu as $key => $value) {
+            // print_r($value);
+            $id = $value['id'];
+            $name = $value['name_' . Yii::$app->language];
+            $link = $this->getLink($value['model'], $value['model_id']);
+            $subMenu = \backend\models\Menu::find()->where(['type' => $type, 'parent' => $id])->orderBy('number asc, id desc')->all();
+
+
+            if ($subMenu) {
+            ?>
+
+                <!-- <li aria-haspopup="true"> -->
+                <a class="nav__item" href="<?= $link; ?>" title="<?= $name; ?>">
+                    <?= $name; ?>
+                </a>
+                <!-- <div class="grid-container2"> -->
+                <ul class="absolute hidden group-hover:block">
+                    <?php $this->menuGenerator($type, $id); ?>
+                </ul>
+                <!-- </div> -->
+                <!-- </li> -->
+            <?php
+            } else {
+            ?>
+                <!-- <li class="nav__item"> -->
+                <a class="nav__item <?= ($value['model'] == "Home") ? '_active-home' : ''; ?>" href="<?= $link; ?>" title="<?= ($value['model'] == "Home") ? 'Trang chủ' : $name; ?>">
+                    <!-- z-10 relative  -->
+                    <?= $name; ?>
+                </a>
+                <!-- </li> -->
+            <?php
+            }
         }
     }
 
